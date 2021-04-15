@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
-import '../Constants/RouteNames.dart' as myRouteNames;
-import '../Constants/Colors.dart' as myColors;
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
+import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
 
 class TargetScreen extends StatelessWidget {
   final userData = UserData.instance;

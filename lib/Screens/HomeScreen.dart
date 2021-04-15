@@ -4,8 +4,9 @@ import 'package:dartx/dartx.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/SehirCard.dart';
 
-import '../Constants/RouteNames.dart' as myRouteNames;
-import '../Classes/Sehir/Data.dart';
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
+
+import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

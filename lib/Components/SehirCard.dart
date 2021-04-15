@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/melih/AndroidStudioProjects/nereye_gitmeli_app/lib/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 class SehirCard extends StatelessWidget {
   final Sehir sehirData;

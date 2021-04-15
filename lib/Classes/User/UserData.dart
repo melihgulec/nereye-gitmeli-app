@@ -1,5 +1,5 @@
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
-import 'Target.dart';
+import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
 
 class UserData{
   List<Target> targetList = [];

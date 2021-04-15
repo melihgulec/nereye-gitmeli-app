@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Constants/Colors.dart' as myColors;
+
+import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
 
 class ContainerWithTitle extends StatelessWidget {
 

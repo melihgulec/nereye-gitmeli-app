@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../Constants/Colors.dart';
+
+import 'package:nereye_gitmeli_app/Constants/Colors.dart';
 
 class LoginScreen extends StatelessWidget {
   @override

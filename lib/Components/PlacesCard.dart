@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/melih/AndroidStudioProjects/nereye_gitmeli_app/lib/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Classes/Places/Places.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 

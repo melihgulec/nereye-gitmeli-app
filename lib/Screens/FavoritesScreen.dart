@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
-
-import '../Constants/RouteNames.dart' as myRouteNames;
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 class FavoritesScreen extends StatelessWidget {
   final userData = UserData.instance;

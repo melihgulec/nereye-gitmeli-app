@@ -8,7 +8,7 @@ import 'package:nereye_gitmeli_app/Screens/TargetScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/NotFoundScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/AddTargetScreen.dart';
 
-import '../Constants/RouteNames.dart';
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart';
 
 class Router{
   static Route<dynamic> generateRoute(RouteSettings settings){
