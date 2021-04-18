@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rouvie.nereye_gitmeli_app">
    <application
-        android:label="nereye_gitmeli_app"
+        android:label="Nereye Gitmeli"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

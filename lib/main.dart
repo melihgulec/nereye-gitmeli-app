@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'Constants/Colors.dart';
 import 'Constants/RouteNames.dart';
 import 'Route/Router.dart' as myRoute;
@@ -22,6 +23,7 @@ class HomeView extends StatelessWidget {
           headline6: TextStyle(color: Colors.white),
         ),
         appBarTheme: AppBarTheme(
+          brightness: Brightness.dark,
           iconTheme: IconThemeData(color: Colors.white),
         ),
       ),
