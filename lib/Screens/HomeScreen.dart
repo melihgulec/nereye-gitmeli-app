@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dartx/dartx.dart';
-import 'package:flutter/services.dart';
 
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/SehirCard.dart';
