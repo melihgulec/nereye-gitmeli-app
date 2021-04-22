@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:dartx/dartx.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
-import 'package:nereye_gitmeli_app/Components/SehirCard.dart';
 
 class CityDetail extends StatefulWidget {
   final Sehir data;
@@ -135,13 +132,16 @@ class _CityDetailState extends State<CityDetail> {
               title: 'Gezilecek Yerler',
               titleSize: 25,
               widget: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: widget.data.yerler
-                      .map((e) => PlacesCard(
-                            placeData: e,
-                            sehirData: widget.data,
-                          ))
-                      .toList()),
+                scrollDirection: Axis.horizontal,
+                children: widget.data.yerler
+                    .map(
+                      (e) => PlacesCard(
+                        placeData: e,
+                        sehirData: widget.data,
+                      ),
+                    )
+                    .toList(),
+              ),
             ),
           ],
         ),

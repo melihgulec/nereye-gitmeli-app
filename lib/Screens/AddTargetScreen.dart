@@ -17,7 +17,7 @@ class AddTargetScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Your Target'),
+        title: Text('Yeni Bir Hedef Ekle'),
       ),
       body: Center(child: SingleChildScrollView(child: Content())),
     );

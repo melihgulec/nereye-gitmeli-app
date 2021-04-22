@@ -5,3 +5,5 @@ const targetRoute = "/target";
 const favoritesRoute = "/favorites";
 const addTargetRoute = "/addTarget";
 const hakkindaRoute = "/hakkinda";
+const planRoute = "/plan";
+const addPlanRoute = "/addPlan";

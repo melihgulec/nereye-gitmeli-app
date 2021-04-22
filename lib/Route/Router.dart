@@ -7,6 +7,8 @@ import 'package:nereye_gitmeli_app/Screens/LoginScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/TargetScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/NotFoundScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/AddTargetScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/PlanScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/AddPlanScreen.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart';
 
@@ -20,6 +22,8 @@ class Router{
       case targetRoute: return MaterialPageRoute(builder: (context) => TargetScreen());
       case addTargetRoute: return MaterialPageRoute(builder: (context) => AddTargetScreen());
       case hakkindaRoute: return MaterialPageRoute(builder: (context) => Hakkinda());
+      case planRoute: return MaterialPageRoute(builder: (context) => PlanScreen());
+      case addPlanRoute: return MaterialPageRoute(builder: (context) => AddPlanScreen());
       default:
         return MaterialPageRoute(builder: (context) => NotFoundScreen());
     }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:dartx/dartx.dart';
 
@@ -43,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class Content extends StatelessWidget {
   final Data sehirData = new Data();
-
+  var list = new List<int>.generate(10, (int index) => index); // [0, 1, 4]
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -116,6 +118,23 @@ class Content extends StatelessWidget {
                     ),
                   ],
                 ),
+                Container(
+                  child: Card(
+                    color: Theme.of(context).primaryColor,
+                    child: ListTile(
+                      onTap: () => Navigator.pushNamed(
+                          context, myRouteNames.planRoute),
+                      leading: Icon(
+                        Icons.bookmark_outlined,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        'Planlama',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 15,
                 ),
@@ -157,7 +176,7 @@ class Content extends StatelessWidget {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

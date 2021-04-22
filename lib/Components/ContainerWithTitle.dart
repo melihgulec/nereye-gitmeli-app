@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
 
 class ContainerWithTitle extends StatelessWidget {
-
   final Widget widget;
   final String title;
   final double containerHeight;
@@ -33,13 +32,14 @@ class ContainerWithTitle extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               child: Text(
                 title,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: titleSize),
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: titleSize),
                 textAlign: TextAlign.start,
               ),
             ),
-            Divider(height: 5,),
+            Divider(
+              height: 5,
+            ),
             Container(
               height: this.containerHeight,
               padding: EdgeInsets.only(bottom: 5),
