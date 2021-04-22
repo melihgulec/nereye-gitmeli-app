@@ -76,7 +76,7 @@ class _TargetScreenState extends State<TargetScreen> {
                           ),
                           title: Text(e.targetHead),
                           subtitle: Text(
-                              "Hedef Şehir: ${e.targetDestination}\n\n${e.targetDescription}\n\n${e.targetDate.toString()}"),
+                              "Hedef Şehir: ${e.targetDestinationCity}\n\n${e.targetDescription}\n\n${e.targetDate.toString()}"),
                         ),
                       ),
                     )
