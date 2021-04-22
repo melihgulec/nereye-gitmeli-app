@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
-import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
 
-class TargetScreen extends StatelessWidget {
+class TargetScreen extends StatefulWidget {
+  @override
+  _TargetScreenState createState() => _TargetScreenState();
+}
+
+class _TargetScreenState extends State<TargetScreen> {
   final userData = UserData.instance;
+
+  void makeToastMessage(String message) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        textColor: Colors.black,
+        fontSize: 16.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,50 +36,53 @@ class TargetScreen extends StatelessWidget {
       ),
       body: userData.targetList.isEmpty
           ? Center(
-              child: Text('Henüz burada bir şey yok.\nYeni bir hedef eklemek için sağ alttaki butonu kullan.', textAlign: TextAlign.center,),
+              child: Text(
+                'Henüz burada bir şey yok.\nYeni bir hedef eklemek için sağ alttaki butonu kullan.',
+                textAlign: TextAlign.center,
+              ),
             )
           : SingleChildScrollView(
               padding: EdgeInsets.all(8),
               child: Column(
                 children: userData.targetList
                     .map(
-                      (e) => TargetWidget(
-                        targetStr: e.targetDestinationCity,
-                        targetDescription: e.targetDescription,
-                        targetDate: e.targetDate,
-                        targetHead: e.targetHead,
+                      (e) => Card(
+                        child: ListTile(
+                          onTap: () {},
+                          tileColor: Colors.white,
+                          trailing: Container(
+                            height: 40,
+                            width: 40,
+                            color: Theme.of(context).primaryColor,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.delete_forever,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    int index = userData.targetList.indexOf(e, 0);
+                                    userData.targetList.removeAt(index);
+                                    makeToastMessage("${e.targetHead} yapılacaklar listenden kaldırıldı.");
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                          leading: Icon(
+                            Icons.assignment_rounded,
+                            color: Theme.of(context).primaryColor,
+                          ),
+                          title: Text(e.targetHead),
+                          subtitle: Text(
+                              "Hedef Şehir: ${e.targetDestination}\n\n${e.targetDescription}\n\n${e.targetDate.toString()}"),
+                        ),
                       ),
                     )
                     .toList(),
               ),
             ),
-    );
-  }
-}
-
-class TargetWidget extends StatelessWidget {
-  final String targetStr;
-  final String targetHead;
-  final String targetDate;
-  final String targetDescription;
-
-  TargetWidget(
-      {this.targetStr,
-      this.targetDate,
-      this.targetHead,
-      this.targetDescription});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        onTap: () {},
-        tileColor: Colors.white,
-        leading: Icon(Icons.assignment_rounded, color: Theme.of(context).primaryColor,),
-        title: Text(targetHead),
-        //trailing: Icon(Icons.chevron_right),
-        subtitle: Text("Hedef Şehir: ${targetStr}\n\n${targetDescription}\n\n${targetDate.toString()}"),
-      ),
     );
   }
 }

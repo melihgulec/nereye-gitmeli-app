@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class Content extends StatelessWidget {
   final Data sehirData = new Data();
-  var list = new List<int>.generate(10, (int index) => index); // [0, 1, 4]
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
