@@ -64,7 +64,7 @@ class _TargetScreenState extends State<TargetScreen> {
                                   () {
                                     int index = userData.targetList.indexOf(e, 0);
                                     userData.targetList.removeAt(index);
-                                    makeToastMessage("${e.targetHead} yapılacaklar listenden kaldırıldı.");
+                                    makeToastMessage("${e.targetHead} hedeflerinden kaldırıldı.");
                                   },
                                 );
                               },
