@@ -23,6 +23,7 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
         textColor: Colors.black,
         fontSize: 16.0);
   }
