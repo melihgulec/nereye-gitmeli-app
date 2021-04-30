@@ -5,7 +5,10 @@ import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 class SehirCard extends StatelessWidget {
   final Sehir sehirData;
 
-  SehirCard({this.sehirData});
+  SehirCard({
+    Key key,
+    this.sehirData
+  }) : super(key: key);
 
   Widget build(BuildContext context) {
     return Container(

@@ -6,7 +6,11 @@ class PlacesCard extends StatelessWidget {
   final Places placeData;
   final Sehir sehirData;
 
-  PlacesCard({this.placeData, this.sehirData});
+  PlacesCard({
+        Key key,
+        this.placeData,
+        this.sehirData
+      }) : super(key: key);
 
   Widget build(BuildContext context) {
     return Container(
