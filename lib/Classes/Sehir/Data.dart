@@ -15,15 +15,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Koza Han',
-              aciklama: 'Koza Han açıklaması',
+              aciklama: "Koza Han'ın inşa kitabesi yoktur fakat İstanbul'da II. Bayezid için inşa edilen büyük cami ve külliyenin Vakıflar Genel Müdürlüğü'ndeki 1505 tarihli vakfiye suretine göre, geliri bu külliyeye vakfedilmiş olan Koza Han'ın yapımı Mart 1490'da başlamış, açılışı 29 Eylül 1491'de yapılmıştır. Ancak vakfiyede adı geçen kervansarayın Koza Han değil yakınındaki Pirinç Han olduğu, Koza Han'ın yerinin çeşitli kimselerden 1490'da satın alındığı ortaya konulmuştur.",
               fotograf: 'Koza Han'),
           Places(
               adi: 'Muradiye Külliyesi',
-              aciklama: 'Muradiye Külliyesi açıklaması',
+              aciklama: "Muradiye Külliyesi, Sultan II. Murad'ın Bursa'da 1425-1426 yıllarında yaptırdığı külliye. Bulunduğu semte de ismini verir.\n\nŞehrin etrafa doğru yayılmasını ve açılımını sağlamak amacıyla yaptırılan külliye, Muradiye Camii, hamam, medrese, imaret ve sonraki yıllarda yaptırılmış 12 türbeden oluşur. Sonraki yıllarda çok sayıda hanedan mensubunun gömülmesiyle saraya ait bir kabristan görünümü kazanmış ve İstanbul’dan sonra en çok saraylıyı barındıran ikinci hazire haline gelmiştir. Bursa'nın çeşitli istimlaklerle kaldırılan mezar taşları ve türbelerinin kitabeleri de caminin haziresine getirilmiştir.\n\nKülliye, 2014 yılında “Bursa ve Cumalıkızık: Osmanlı İmparatorluğunun Doğuşu” Dünya Miras Alanı 'nın bileşenlerinden birisi olarak UNESCO Dünya Mirası Listesi'ne girmiştir.",
               fotograf: 'Muradiye külliyesi'),
           Places(
               adi: 'Ulu Camii',
-              aciklama: 'mekani 3 açıklaması',
+              aciklama: "Bursa Ulu Cami, Bursa’da I. Bayezid tarafından 1396-1400 yılları arasında yaptırılmış dini yapıdır.\n\nBursa’nın tarihi sembollerinden olan cami, Bursa kent merkezinde, Atatürk Caddesi üzerindedir. Çok ayaklı cami şemasının en klasik ve anıtsal örneği sayılır. Yirmi kubbeli yapı, Türkiye’deki iç cemaat yeri en geniş camidir. Mimarın Ali Neccar veya Hacı İvaz olduğu sanılmaktadır. Caminin kündekari tekniği ile yapılmış minberi Selçuklu oyma sanatından Osmanlı ahşap oymacılığı sanatına geçişin en önemli örneklerinden biri kabul edilen değerli bir sanat eseridir.",
               fotograf: 'Ulu camii'),
         ],
       yemekler: [
@@ -43,15 +43,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Abant Gölü',
-              aciklama: 'Abant Gölü açıklaması',
+              aciklama: "Abant Gölü yeraltında meydana gelen tektonik çöküntüler sonucunda büyük taş bloklarının vadiyi doldurmasıyla oluşmuştur. Deniz seviyesinden yüksekliği 1328 m. yüzey genişliği 1.25 km² olup maksimum 18m. derinliktedir. Tektonik kökenli göl Kuzey Anadolu fay hattında bulunmaktadır. Abant Gölü’nü dağlardan gelen kar suları ve bir iki küçük dere beslemektedir. Gölden dışarı taşan temiz ve doğal su Dirgene Çayı’dır (Atıcı ve Obalı 2002). Abant Gölü çevresinde sıralanan dağların zirveleri tabiat parkının sınırlarını oluşturmaktadır. Tabiat parkının en yüksek noktası 1794m. ile Erenler Tepesi iken en düşük noktası 1328m. ile Abant Gölü seviyesidir (OBM,1991). Abant gölü kış aylarındaki hızlı hava soğumaları nedeni ile kıyıdan başlayarak tamamen donmaktadır.",
               fotograf: 'abant gölü'),
           Places(
               adi: 'Akkaya Travertenleri',
-              aciklama: 'Akkaya Travertenleri açıklaması',
+              aciklama: "Bolu'nun 10 kilometre güneybatısında, Mudurnu yolu üzerinde bulunan Akkaya Travertenleri, “Bolu'nun Pamukkalesi” olarak ün yapmış olup, görülmeye değer bir güzelliğe sahiptir. Bolu ve Batı Karadeniz Bölgesi’ndeki tek örnek olan, doğal yapısını aynen koruyan nadir çevrelerden biri olan Akkaya Travertenleri, doğu–batı doğrultusunda 250 metre uzunlukta bir oluşum ve bu oluşumun 100 metre batısında 50 metre uzunlukta farklı bir oluşum daha bulunmaktadır. Akkaya Travertenleri yemyeşil doğa ile bütünleşen bir manzara sergiler. Özellikle yaz aylarında traverten havuzları serinlemek amacıyla çok ilgi görmektedir. Ayrıca dinlenmek ve piknik yapmak isteyenler için ideal bir yer olan Akkaya Mevkii'nde özel sektörce işletilen günübirlik turistik tesisler faaliyet göstermektedir.",
               fotograf: 'akkaya travertenleri'),
           Places(
               adi: 'Kartalkaya Kayak Merkezi',
-              aciklama: 'Kartalkaya Kayak Merkezi açıklaması',
+              aciklama: "Kartalkaya, Bolu ilinin doğu tarafında Köroğlu Dağları'nda bir kayak merkezidir. Türkiye'nin sayılı kayak merkezlerindendir. Grand Kartal Otel, Kartal Otel, Dorukkaya Otel ve Golden Key Kartalkaya her kış kayakseverleri ağırlamaktadır. Kayak, kızak ve snowboard kiralama hizmeti de vardır. Oteller meydanında Cafe Society yer alır. Ulaşımda sıkıntı görülmez. Oteller tatil ve eğlence amacı için oldukça yeterli sayılır. Manzara dev çam ağaçları ile süslüdür. Oteller 2000 m. yükseklikte bulunmaktadır. Zirve yaklaşık 2200 metredir. Zirve kayalık olup ve alpin çayırlarla kaplıdır. Kış mevsiminde kar kalınlığı zaman zaman 3 metreyi bulur. Kayak sezonu Aralık - Nisan'dır. Manzara sadece çam ağaçlarıyla sınırlı değildir. Bolu dağlarını ve Köroğlu dağları rahatlıkla görülebilir. Eteklerinde yaylalar bulunmaktadır. Yazın, doğa yürüyüşü gibi aktiviteler de yapılmaktadır.",
               fotograf: 'kartalkaya kayak merkezi'),
         ],
         yemekler: [
@@ -71,15 +71,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Laodicea Kenti',
-              aciklama: 'Laodicea Kenti açıklaması',
+              aciklama: "Laodikeia Antik Kenti, Denizli İli’nin 6 km. kuzeyinde yer almaktadır. Helenistik kent, M.Ö. 3. yy.’ın ortalarında Seleukos Kralı II. Antiokhos tarafından karısı Laodike adına kurulmuştur. M.Ö. 130/129 yılında ise bölge tamamen Roma’ya (önce Cumhuriyet, sonra İmparatorluk) bağlanmıştır. Hıristiyanlığın ilk 7 kilisesinden birine sahip olan kent, Erken Bizans Dönemi’nde metropollük seviyesinde dini bir merkez haline gelmiştir. Laodikeia’da yapılan kazı çalışmaları, Erken Kalkolitik Dönem (Bakır Çağı, M.Ö. 5500’den M.S. 7. yy.’a kadar kesintisiz yerleşimlerin varlığını ortaya koymuştur. Laodikeia, önemli arkeolojik kalıntılara sahiptir.",
               fotograf: 'laodicea'),
           Places(
               adi: 'Ornaz Vadisi',
-              aciklama: 'Ornaz Vadisi açıklaması',
+              aciklama:  "Denizli şehir merkezine 8 km uzaklıkta bulunan Ornaz Vadisi, doğa yürüyüşü yapmayı sevenler, kampçılar ve doğa fotoğrafçıları tarafından oldukça rağbet gören bir yer. Vadi içerisinde yürürken kayalıkların arasından akan tertemiz şelale sularını görebilirsiniz. Şelale yanına çadırınızı kurabilir ateş yakabilirsiniz. ",
               fotograf: 'ornaz vadisi'),
           Places(
               adi: 'Pamukkale Travertenleri',
-              aciklama: 'Pamukkale Travertenleri açıklaması',
+              aciklama: "Akan sulardan kalan karbonat mineralleri ve kent kaplıcalarını kapsayan Pamukkale Travertenleri, Menderes Nehri'nde bulunmaktadır. \n\nHem Türkiye'nin hem de Denizli'nin sembolü durumda olan bu doğal alanda çıkan su kaynaklarının içindeki karbondioksitin uçması ve su içerisindeki kalkerin çökmesi ile kristalleşmiş olan travertenler, mucizevi bir güzelliği sahiptir. Bu eşsiz, doğal ve pamuk tarlasını andıran alan aynı zamanda UNESCO Dünya Miras Listesi'ne alınmıştır.",
               fotograf: 'pamukkale travertenleri'),
         ],
         yemekler: [
@@ -99,15 +99,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Dalaman Çayı',
-              aciklama: 'Dalaman Çayı açıklaması',
+              aciklama: "Dalaman çayı, Gölhisar ilçesinin güneyindeki Yeşilgöl dağlarından doğar, Ortaca ve Dalaman ilçe sınırlarını çizerek, Akdeniz'e dökülür. \n\nDalaman çayı Akdeniz ve Ege bölgelerinin sınırını oluşturur. Toplam uzunluğu 229 km, havza alanı 3.500 km²'dir. Yukarı çığırında dar ve derin vadide hızlıca akan çay, aşağı çığırında taşıdığı alüvyonlarla Dalaman ovasını oluşturur. Ovadaki akış daha yavaştır. Çay üzerinde zorluk derecesi 3-4 olan, 26 km'lik alanda rafting yapılır. Dalaman havaalanın yapılmasından sonra turizm açısından daha da önemli hale gelmiştir. Üzerine Bereket barajı ve Akköprü barajı yapılmıştır",
               fotograf: 'dalaman çayı'),
           Places(
               adi: 'Saklıkent Kanyonu',
-              aciklama: 'Saklıkent Kanyonu açıklaması',
+              aciklama: "6 Haziran 1996 tarihinde kurulan Saklıkent Milli Parkı, Türkiye'nin güneybatısındaki bir milli parktır. Milli park bir kanyondur ve Muğla ilinde, Seydikemer'de, Fethiye'ye 50 km (31 mil) uzaklıkta yer almaktadır. Thé Kanyon, Antalya iline bağlı Kaş'a 65 km uzaklıktadır. \n\nKanyon, dünyanın en derinlerinden biri olan 300 m (980 ft) derinliğinde ve 18 km (11 mil) uzunluğundadır. Binlerce yıl boyunca akan suların kayaların aşınmasıyla oluşmuştur. Kış aylarında su seviyesi yükseldiğinden, ziyaretçiler kanyona yaz aylarında sadece daha derin kısımlardan girebilirler. Kanyonun 4 km'lik kısmı (2,5 mil), Toros Dağları'ndaki karların çoğunun eridiği ve Akdeniz'e giderken geçtiği Nisan ayından sonra yürünebilir. Saklıkent, Türkçe'de gizli şehir anlamına geliyor. 16 km'lik tam uzunluğu ancak profesyonel ekipman ve gelişmiş kanyon geçişi bilgisi ile keşfetmek mümkündür. Bazı macera merkezleri, bir gecede Biwak kampı ve rappel için yaklaşık 30 şelale ile rehberli turlar sunar.",
               fotograf: 'Saklıkent kanyonu'),
           Places(
               adi: 'Ölüdeniz',
-              aciklama: 'Ölüdeniz açıklaması',
+              aciklama: "Ölüdeniz, Muğla ilinin Fethiye ilçesine bağlı bir mahalledir. Ölüdeniz kumsalı yüzde seksen iki oyla 2006 yılında Dünya'nın en güzel kumsalı seçilmiştir.\n\n Belde, turizm açısından oldukça gelişmiştir. Likyalılarda ışık ve güneş diyarı, Ortaçağ'da 'Uzak Diyar' olarak tanınır, Anadolu'nun güneybatısında yer alan Teke Yarımadası'da bulunur. Türkiye'de bulunan deniz kulağı (lagün) oluşumlarından biridir. \n\nÖlüdeniz, adı gibi durgun bir göl niteliğindedir. En fırtınalı günlerde Belceğiz kıyıları dalgalarla boğuşurken, Ölüdeniz'de sadece çırpıntılar meydana gelir.",
               fotograf: 'ölüdeniz'),
         ],
         yemekler: [
@@ -127,15 +127,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Odunpazarı',
-              aciklama: 'Odunpazarı açıklaması',
+              aciklama: "Şehrin ilk yerleşim yeridir. Eskişehir kent merkezinde yer alır ve diğer ilçelere göre yükseltisi daha fazladır. Bir rivayete göre Eskişehir'e yerleşmeyi düşünen ilk halk Odunpazarı ve şimdiki Porsuk Çayı'nın olduğu bölgeye birer koyun ciğeri asarlar. Hangisi çok dayanırsa orayı yerleşim bölgesi seçeceklerdir. Odunpazarı'na asılan ciğer daha geç bozulur ve ilk yerleşim burada oluşur.\n\nOdunpazarı'nın tarihî kent merkezi, UNESCO tarafından 2012'de Dünya Mirası Geçici Listesi'ne dahil edildi. 2019 yılında ise Japon mimar Kengo Kuma'nın tasarladığı Odunpazarı Modern Müze açılmıştır.",
               fotograf: 'Odunpazarı'),
           Places(
               adi: 'Porsuk Çayı',
-              aciklama: 'Porsuk Çayı açıklaması',
+              aciklama: "Porsuk Çayı (antik, Frigce: Tymbris ) İç Anadolu Bölgesi'nde bir ırmaktır. Aksu Dağı'nın kuzey yamacından inen Bayatçık Deresi ile Murat Dağı'nın kuzey yamacından inen Kızıltaş Suyu'nun birleşmesiyle doğan Porsuk Çayı, Sakarya Irmağı'nın en uzun (448 km) koludur. \n\nKütahya Ovası'ndan geçip Eskişehir kentinin güneybatısında yer alan ve 1948'de hizmete giren Porsuk I ve 1971'de hizmete giren Porsuk II barajları arkasında toplandıktan sonra, Eskişehir Ovası'ndan ve Eskişehir kentinden geçer; Yassıhöyük karşısında Sakarya Irmağı'na ulaşır. \n\nUzun yıllar evsel ve endüstriyel atıkların döküldüğü bir yer olan Porsuk Çayı, Belediye Başkanı Yılmaz Büyükerşen döneminde temizlenmeye başlamış ve uzun yıllarca süren çalışmalar sonucu 2000'li yıllarda temiz bir hale getirilirerek şehre kazandırılmıştır.",
               fotograf: 'porsuk çayı'),
           Places(
               adi: 'Sazova Parkı',
-              aciklama: 'Sazova Parkı açıklaması',
+              aciklama: "Eskişehir Bilim Sanat ve Kültür Parkı, Eskişehir'in Sazova Mahallesi'nde 400 bin metrekare üzerine kurulu park.\n\nİlk kez Ekim 2008'de Ramazan Bayramı süresince tamamlanmadan ziyarete açılmıştır. Parkta Nuh’un Gemisi’nin yanı sıra 25 bin metrekarelik bir gölet, park çevresinde dolaşan buharlı mini tren, çocuk oyun alanları, hayvanat bahçesi, bilim ve deney müzesi, konser alanları, amfi tiyatro bulunmaktadır.\n\nEskişehir şehir merkezine araba ile ortalama 15 dakika uzaklıktadır. Daha çok çocuklar için tercih edilen parkın tam adı Eskişehir Sazova Bilim Sanat ve Kültür Parkı4 Eylül 2016 tarihinde Wayback Machine sitesinde arşivlendi.'dır. Hayvanat Bahçesinden akvaryuma, masal şatosundan korsan gemisine kadar birçok turistik aktiviteyi bu park içerisinde bulabilirsiniz.",
               fotograf: 'Sazova parkı'),
         ],
         yemekler: [
@@ -156,15 +156,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Erikli Plajı',
-              aciklama: 'Erikli Plajı açıklaması',
+              aciklama: "Erikli denizin suyu gayet sıcaktır. Yani ege denizi gibi yazın sadece ağustos ayında sıcak olmaz. Gayet yüzmeye uygun sıcaklıkta bir denizi bulunmaktadır. Haziran aylarında 23 derece Temmuz ayında 24 Ağustos ayında 25 dereceleri bulabilmektedir. Erikli denizi dalgalı bir deniz değildir. Çocuklarınızla güvenle denize girebilir yüzme çok bilmeseniz bile rahatlıkla denizin keyfini çıkarabilirsiniz.Erikli denizinin tuz oranı ise son derece idealdir. Akdeniz bölgesindeki gibi göz yakmaz ve üzerinizde parlak parlak tuz kalmaz.",
               fotograf: 'erikli plajı'),
           Places(
               adi: 'Hıdırlık Tabyası',
-              aciklama: 'Hıdırlık Tabyası açıklaması',
+              aciklama: "Edirne’de ilk istihkâm (savunma amacıyla arazi üzerinde yapılan her türlü yapı) inşaatlarına, 1829 yılındaki Rus işgali karşısında Divan-ı Hümayun tercümanı Hoca İshak Efendi’nin nezareti altında başlanmıştır. İnşa edilen bu yapılardan en önemlilerinden birisi I. Balkan Savaşı’nda da kullanılan Hıdırlık Tabyası’dır.\n\nHıdırlık Tabyası, yaklaşık 1800 metreyi bulan çevresi ile Edirne’deki en büyük tabyadır. Tabya: Nizamiye Ana Giriş Binası, Koğuş Binası, Topçu Odaları, Topçu Bataryaları (Top Mevzisi), Hendek ve Avlu’dan oluşmaktadır.",
               fotograf: 'hıdırlık tabyası'),
           Places(
               adi: 'Karaağaç Tren Garı',
-              aciklama: 'Karaağaç Tren Garı açıklaması',
+              aciklama: "Karaağaç Tren İstasyonu, Edirne'nin Karaağaç kasabasında bulunan ve II. Abdülhamid devrinde yaptırılan tren istasyon binasıdır. Edirne Tren Garı olarak inşa edilmiş olan bina günümüzde Trakya Üniversitesi Rektörlük Binası olarak kullanılır.\n\nİstanbul'daki Sirkeci Garı örnek olarak yapılmış gar binalarından birisidir. Şark Demiryolları Şirketi adına Mimar Kemaleddin tarafından neoklasik üslupta inşa edildi. Üç katlı, dikdörtgen planlı ve 80 m uzunluğunda bir yapıdır. İstanbul'u Avrupa'ya bağlayan demiryolunun en önemli istasyonlarından birisiydi\n\nİnşaatı 1914 yılında genel olarak bitirilmişti ancak o yıl başlayan I. Dünya Savaşı nedeniyle demiryolu güzergâhı değiştiği için hizmete giremedi. Savaş sonunda Osmanlı Devleti sınırları dışında kaldı.\n\n24 Temmuz 1923 tarihinde imzalanan Lozan Antlaşması'nda Karaağaç, Bosnaköy ile birlikte Yunanistan'ın Batı Anadolu'da yaptığı tahribata karşılık, savaş tazminatı olarak Türkiye'ye verildi. Böylece yeniden Türk sınırlarına giren Karaağaç İstasyonu, 14 Eylül 1923 günü Yunanlardan teslim alındı ve 1930'da işletmeye açıldı.",
               fotograf: 'karaağaç tren garı'),
         ],
         yemekler: [
@@ -184,15 +184,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Kaleiçi',
-              aciklama: 'Kaleiçi açıklaması',
+              aciklama: "Kaleiçi, Antalya'nın Muratpaşa ilçesi sınırları içerisinde yer alan deniz ve kara surları tarafından kuşatılan kent merkezi'ne verilen isim'dir. Kaleiçi'nin sokakları ve yapıları Antalya tarihinin izlerini günümüze kadar getirmektedir. Eski evlerin önemi sadece mimari açıdan değil, aynı zamanda insanların yaşam şekli, davranışları, gelenekleri ve sosyal yönleri konusunda da çok yararlı bilgiler aktarmaktadır.\n\n1972 yılında Antalya iç limanı ve Kaleiçi semti, özgün dokusu nedeniyle 'Gayrimenkul Eski Eserler ve Anıtlar Yüksek Kurulu' tarafından 'SİT bölgesi' olarak koruma altına alınmıştır. Turizm Bakanlığı'na 'Antalya- Kaleiçi Kompleksi' restorasyon çalışmasından dolayı, 28 Nisan 1984’de FİJET (Uluslararası Turizm Yazarları Birliği) tarafından Altın Elma Turizm Oskarı ödülü verilmiştir. Günümüzde Kaleiçi otelleri, pansiyonları, restoranları ve barları ile eğlence merkezi haline gelmiştir.",
               fotograf: 'kaleiçi'),
           Places(
               adi: 'Theimussa',
-              aciklama: 'Theimussa açıklaması',
+              aciklama: "Theimussa, Kale iskelesi, Antalya ili Demre İlçesi Üçağız Köyü yakınlarında bulunan antik Likya kenti.\n\nŞehrin tarihi hakkında pek bilgi yoktur, ancak bir kitabeden tarihinin M.Ö. IV. yüzyıla kadar indiği anlaşılmaktadır. Burada daha çok mezar kalıntıları görülürse de köyün kıyısında söveleri hâlâ yerinde durmakta ve bir kapı ile alçak bir kayalık üzerinde kule kalıntısı da görülebilir.",
               fotograf: 'theimussa'),
           Places(
               adi: 'Düden Şelalesi',
-              aciklama: 'Düden Şelalesi açıklaması',
+              aciklama: "Kepez İlçe sınırları içerisinde, Varsak Mahallesi’nde bulunmaktadır. Düden Şelalesi çeşitli kaynaklarda, İskender Şelalesi ve Yukarı Düden Şelalesi olarak da geçmektedir. Aynı zamanda halk arasında Düdenbaşı Şelalesi diyenler de vardır. Eski Antalya-Burdur yolunun 28'inci kilometresinde Kırkgözler’in 30'ncu kilometresinde Pınarbaşı adında iki büyük karstik kaynak çıkmaktadır. Suyu bol bu iki nehir kısa bir akıştan sonra birleşerek Bıyıklı Düdeni içinde kaybolur. Bıyıklı Düdeni’nde kaybolan su 14 kilometre kadar yerin altında gittikten sonra Varsak Çöküntüsü'nün bir ucundan çıkar, çok kısa bir akıştan sonra çöküntünün öbür ucundan tekrar batar. Varsak’ta kaybolan su iki kilometre kadar yeraltı akışından sonra Düdenbaşı’nda yeryüzüne çıkar.",
               fotograf: 'düden şelalesi'),
         ],
         yemekler: [
@@ -212,15 +212,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Anıtkabir',
-              aciklama: 'Anıtkabir açıklaması',
+              aciklama: "Anıtkabir, Türkiye'nin başkenti Ankara'nın Çankaya ilçesinde yer alan Mustafa Kemal Atatürk'ün anıt mezarını içeren komplekstir. Emin Onat ile Orhan Arda'nın tasarımı olan yapı kompleksinin 1944'te başlanan inşası 1953'te tamamlanmıştır. Kompleks, anıt mezar binası başta olmak üzere çeşitli yapı ve anıtların yanı sıra Barış Parkı olarak adlandırılan ağaçlık alandan oluşmaktadır.",
               fotograf: 'anıtkabir'),
           Places(
               adi: 'Ankara Kalesi',
-              aciklama: 'Ankara Kalesi açıklaması',
+              aciklama: "Kale tarih içinde çeşitli dönemler yaşamıştır. MÖ 2. yüzyıl başında Romalıların Galatya'yı işgalinden sonra kent büyüyerek kale dışına taştı. Roma İmparatoru Caracalla MÖ 217'de kalenin surlarını onarttı. MÖ 222 - 260 arasında İmparator Alexander Severus, Perslere yenilince kale kısmen tahrip edildi. 7. yüzyılın 2. yarısından sonra Romalılar kaleyi onarmaya başladı. Bizans döneminde İmparator II. Justinianos MS 668'de dış kaleyi yaptırmıştır, İmparator III. Leon 740'ta kale duvarlarını onarırken iç kale surlarını yükseltmiştir. Bunun ardından İmparator I. Nikiforos 805'te, İmparator I. Basileios 869'da bu kaleyi onarmıştır. Kale 1073 yılında Selçukluların eline geçmiştir. 1101 yılında Haçlılarca ele geçirilen kale 1227 yılında tekrar Selçukluların hakimiyetine girmiştir. I. Alâeddin Keykubad kaleyi yeniden onartmış, 1249'da ise II. İzzeddin Keykavus kaleye yeni ilaveler yapmıştır. Osmanlı döneminde 1832'de Kavalalı İbrahim Paşa tarafından onarımdan geçirilmiş, kalenin dış duvarları genişletilmiştir.",
               fotograf: 'ankara kalesi'),
           Places(
               adi: 'Hamamönü',
-              aciklama: 'Hamamönü açıklaması',
+              aciklama: "Hamamönü, Ankara ilinin Altındağ ilçesinde bulunan tarihi bir bölgedir. Hacettepe Mahallesi sınırlarında kalır. Bölgede bulunan 19. yüzyıl sivil mimarlık örneği tarihi binalar restore edilerek bölge yeniden canlandırılmıştır. Hamamönü, adını bir Türk boyu olan Oğuzların Bayındır boyu beylerinden Karacabey’in yaptırdığı Çifte Hamamdan almıştır. Tarihi Karacabey Hamamı burada bulunmaktadır. İstiklal Marşı’nın yazıldığı Mehmet Akif Ersoy Parkı ve parkın içerisinde Mehmet Akif Ersoy Müze Evi yer almaktadır. Hamamönü'de yer alan camiler; Taceddin Sultan Camii, Hacı İlyas Camii, Hacı Musa Camii, Sarıkadı Camii, Mehmet Çelebi Camiidir. Hamamönünde yer alan konaklar; Kamil Paşa Konağı, Beynamlızade Konağı, Kabakçı Konağıdır. Son dönem Osmanlı zamanından kalma evler tamamen Türk motifleri ile bezenmiş olup, sokakları gezildiğinde 19. yüzyıldaymış gibi hissettirir.",
               fotograf: 'hamamönü'),
         ],
       yemekler: [
@@ -241,14 +241,16 @@ class Data {
         yerler: [
           Places(
               adi: 'Nysa Antik Kenti',
-              aciklama: 'Nysa Antik Kenti açıklaması',
+              aciklama: "Nysa Antik Kenti Aydın İline 30 km uzaklıkta olan Sultanhisar ilçesinin kuzeyinde, Aydın Dağlarının güneye bakan yamacında, Tepecik deresinin çevresinde bulunur. Nysa Antik Kenti Tepecik deresinin oluşturduğu derin bir boğazın iki yakasına kurulmuş iki şehirden meydana gelir. İki şehir birbirine üç köprü ile bağlanır. Antik kentin altın çağlarını yaşadığı dönemde yaklaşık 40 bin kişinin şehirde yaşadığı düşünülmektedir. Nysa Antik Kentinin kuruluşunun MÖ 6. Yüzyılda dayandığı ifade edilmektedir.",
               fotograf: 'nysa antik kenti'),
           Places(
               adi: 'Tralleis',
-              aciklama: 'Tralleis açıklaması',
+              aciklama: "Menderes havzasının verimli toprakları üzerine kurulmuş olan bu kent İskender tarafından alınmasından sonra Hellenistik krallıklar arasında sık sık el değiştirmiştir. Kentin ismi antik kaynaklarda çoğunlukla Tralleis, ender olarak da Trallis şeklinde geçer. Atinalı tarihçi Ksenofon, Anabasis ve Hellenika adlı eserlerinde kentten Tralli şeklinde bahsetmektedir. Diğer antik kentlerde olduğu gibi Tralleis bir kavim olan Traller ve Argonlular tarafından Dor göçleri sonrasında kurulmuş ve ismini de buradan almıştır. Ancak kentin adını Tralla veya Thiba adında bir Amazon'dan aldığı düşüncesi de bulunmaktadır. Antik Dönemin önemli yazarlarından Yaşlı Plinius'a göre kent sakinlerinin su ihtiyacı Tralleis'in içinden geçen Thebaid adı verilen su kaynağının birleştiği Eudon (Tabakhane) Nehri'nden karşılanmaktadır.Tralleis’te bu gün ayakta kalan tek yapı “Üç Gözler” olarak adlandırılan 2. asırda yapılmış olan, antik çağın eğitim, spor ve kültür açısından önde gelen yapılarından olan gymnasiuma ait kalıntıdır.",
               fotograf: 'tralleis'),
           Places(
-              adi: 'Priene', aciklama: 'Priene açıklaması', fotograf: 'priene'),
+              adi: 'Priene',
+              aciklama: "Priene, Aydın Söke'de Selçuk-Efese yaklaşık 100 km uzaklıkta kurulmuş bir İyon (Antik Yunan) şehridir. Şehir Menderes nehrinin 10 km kuzeyindedir. Şehir kurulduğunda deniz kıyısındaydı. Menderesin alüvyonu nedeniyle şehir şimdi kilometrelerce kara içerisindedir.\n\nBelus'un oğlu Aegyptus yönetiminde İyonlar tarafından kurulduğu kabul edilir. Şehir sonra Lidyalı Ardys tarafından alınır. MÖ 6. yüzyılın ortalarında şehrin Bilgesi Bias yönetiminde, şehir tekrar canlandı ve zenginleşti. MÖ 545 yılında Pers Kralı Cyrus (Kurash) tarafından ele geçirildi. Şehir Perslere karşı İyon Başkaldırısı na (MÖ 499) 12 gemi ile katildi. Komşusu Samos (Sisam) ile ortaya çıkan anlaşmazlıklar ve Büyük İskender in ölümünün ardından çıkan karışıklar dolayısıyla şehir güçsüzleşti. Roma 155 yılında şehri, Bergama (Pergamon) ve Kapadokya krallarının elinden kurtarmak durumunda kaldı.\n\nKapadokya kralının asi oğlu Orophernes, Romalıların şehri alması ile Priene’ye gömdüğü hazinesine ulaştı ve adak olarak şehirdeki Athena tapınağını onardı. Roma ve Bizans yönetimi altında zengin bir şehir olarak kaldı. MS 13. yüzyılda şehir Türklerin eline geçti.",
+              fotograf: 'priene'),
         ],
         yemekler: [
           Foods(ad: 'Çine Köftesi', aciklama: 'çine köftesi açıklaması', fotograf: 'cinekoftesi'),
@@ -273,15 +275,15 @@ class Data {
         yerler: [
           Places(
               adi: 'China Town',
-              aciklama: 'China Town açıklaması',
+              aciklama: "Çin mahallesi, Chinatown olarak da bilinir, Çin dışındaki şehirlerde bulunan Çin mahallelerine verilen isimdir. Kelime anlamı olarak Çin kasabası, anlamına gelir. Özellikle yoğun göç alan New York ve San Francisco gibi şehirlerde büyük Çin mahalleleri bulunur. Genellikle Çin'den yeni gelen göçmenler buralara yerleşirler.",
               fotograf: 'china town'),
           Places(
               adi: 'CN Tower',
-              aciklama: 'CN Tower açıklaması',
+              aciklama: "CN Tower, 553 metre uzunlukta dünyanın ikinci en yüksek kulesidir.\n\nKanada'da yer alan bina Ontario'daki Toronto şehrinde bulunmaktadır ve şehrin simgesi konumundadır. Kanada Ulusal Demiryolu Şirketi tarafından yaptırılmıştır. Kule içerisinde 50'den fazla restoran bulunmaktadır. Ayrıca kule tepesinin zemininin bazı kısımları camla kaplıdır. Buradan ziyaretçiler aşağıya bakabilirler. Yılda 2 milyon ziyaretçisi vardır.",
               fotograf: 'cn tower'),
           Places(
               adi: 'Royal Ontario Müzesi',
-              aciklama: 'Royal Ontario Müzesi açıklaması',
+              aciklama: "Royal Ontario Müzesi (ROM, Fransızca: Musée royal de l'Ontario) Toronto, Ontario, Kanada'da yer alan bir sanat, dünya kültürü ve doğa tarihi müzesidir. Kuzey Amerika'nın en büyük müzelerinden biridir ve Kanada'nın en büyük müzesidir. Her yıl bir milyondan fazla ziyaretçi çekmekte ve bu da ROM'u Kanada'daki en çok ziyaret edilen müze yapmaktadır. Müze, Toronto Üniversitesi bölgesinde Queen's Park'ın kuzeyinde yer almaktadır ve müzenin ana girişi Bloor Street West üzerinde yer alır. Toronto Transit Komisyonu'nun müze istasyonu, ROM'dan sonra ismini almıştır ve 2008'den beri kurumun koleksiyonuna benzeyecek şekilde dekore edilmiştir.\n\n16 Nisan 1912'de kurulan ve 19 Mart 1914'te açılan müze, tarih boyunca Toronto Üniversitesi ile yakın ilişkilerini sürdürmüş, uzmanlık ve kaynaklarını paylaşmıştır. Müze, Ontario Hükûmetinin bağımsız bir Crown ajansı olduğu 1968 yılına kadar Toronto Üniversitesi'nin doğrudan kontrolü ve yönetimi altındaydı. Bugün, müze, dünyanın en geniş araştırma alanı olan araştırma ve koruma faaliyetleri ile Kanada'nın en büyük saha araştırma kurumudur.",
               fotograf: 'royal ontario müzesi'),
         ],
         yemekler: [
@@ -302,15 +304,15 @@ class Data {
         yerler: [
           Places(
               adi: 'The Backs',
-              aciklama: 'The Backs açıklaması',
+              aciklama: "The Backs, İngiltere'nin Cambridge kentindeki Queen's Road'un doğusunda pitoresk bir alandır, burada Cambridge Üniversitesi'nin çeşitli kolejleri, gerekçesiyle nehrin her iki kıyısını da kapsayan Cam Nehri'ne geri döner.",
               fotograf: 'the backs'),
           Places(
               adi: 'King\'s College',
-              aciklama: 'King\'s College açıklaması',
+              aciklama: "King's College London (KCL), Londra Üniversitesi'ni oluşturan ilk kolejlerdendir. İngiltere'nin en eski ve prestijli okullarındandır.\n\n2010-2011 eğitim dönemi itibarıyla 13.800 lisans, 5.300 yüksek lisans öğrencisi vardır.\n\nBirçok öğretim üyesi Nobel Ödülü ile ödüllendirilmiştir. Hâlen İngiltere'nin araştırmaya en çok fon ayıran üniversitelerindendir.\n\nKral IV. George ve Wellington Dükü (daha sonra başbakan) tarafından 1829'da kurulmuştur.\n\nTıp, diş hekimliği, hukuk, siyaset bilimi ve uluslararası ilişkiler, uluslararası güvenlik, müzik ve felsefe alanlarında İngiltere'nin ve dünyanın en önemli bölümlerine sahiptir.",
               fotograf: 'kings college'),
           Places(
               adi: 'Cambridge Science Centre',
-              aciklama: 'Cambridge Science Centre açıklaması',
+              aciklama: "Başlangıçta İngiltere'nin Cambridge kentindeki Jesus Lane'de bulunan Cambridge Bilim Merkezi, kentin ilk interaktif bilim müzesidir. Başlangıç ​​sergi alanı, Cambridge Üniversitesi Rektör Yardımcısı Leszek Borysiewicz tarafından 7 Şubat 2013 tarihinde açıldı, müze 8 Şubat 2013'te halka açıldı.",
               fotograf: 'Cambridge Science Centre'),
         ]),
     Sehir(
@@ -326,15 +328,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Big Ben',
-              aciklama: 'Big Ben açıklaması',
+              aciklama: "Big Ben (resmi adıyla Elizabeth Kulesi), Londra'da Westminster Sarayı'nın yanındaki ünlü saat kulesi. Dünyanın en büyük ikinci dört yüzlü saatidir. 'Big Ben' aslında saat kulesinin çanının adıdır, ancak zamanla halk tarafından tüm yapıyı belirtmek için kullanılır olmuştur. 26 Haziran 2012 tarihinde kulenin ismi kraliçenin tahta çıkışının 60. yılı onuruna parlamentonun aldığı kararla 'Elizabeth Kulesi' olarak değiştirilmiştir.\n\nKule, Augustus Pugin tarafından neo-Gotik tarzda tasarlanmıştır. 1859'da tamamlandığında, saati dünyadaki en büyük saatiydi. Kule 316 fit (96 m) yüksekliğindedir ve zemin seviyesinden çan kulesine tırmanma 334 adımdır. Tabanı kare şeklindedir ve her iki tarafta 40 fit (12 m) boyutundadır. Saatin kadranları 22,5 fit (6,9 m) çapındadır. İngiltere'nin dört ülkesi de kulede İngiltere için bir gül, İskoçya için devedikeni, Kuzey İrlanda için yonca ve Galler için pırasa içeren kalkanlarda temsil ediliyor. 31 Mayıs 2009'da kulenin 150. yıl dönümü kutlamaları düzenlendi.",
               fotograf: 'big ben'),
           Places(
               adi: 'Buckingham Sarayı',
-              aciklama: 'Buckingham Sarayı açıklaması',
+              aciklama: "Buckingham Sarayı (İngilizce: Buckingham Palace, İngilizce telaffuz: [ukˈbʌkɪŋəm] İngilizce telaffuz: [ˈpælɪs]), Birleşik Krallık hükümdarlarının yönetim merkezi ve Londra'daki ikametgahı. Westminster Şehri'nde bulunan saray sık sık devlet işlerinde ve yabancı devlet insanlarının ağırlanmasında kullanılır.\n\n150 yıl kadar özel mülk olan sarayın arazisinde 1703'te Buckingham Evi olarak adlandırılan Westminster Dükü'nün konağı bulunmaktaydı. 1763'te III. George tarafından Kraliçe Charlotte için alınan bina daha sonra 'Kraliçenin Evi' olarak adlandırılmaya başlandı. 19. yüzyıl boyunca John Nash ve Edward Blore gibi mimarlarca genişletilen binaya eklemeler yapıldı. Saray 1837'de Kraliçe Victoria'nın tahta çıkmasının ardından Londra'daki ikametgahı oldu.\n\nSaraya 19. yüzyıl sonu ve 20. yüzyıl başında yapılan son eklemelerde doğu cephesine kraliyet ailesinin halkı selamladığı balkon yapılmıştır. II. Dünya Savaşı'ndaki Alman bombardımanında yıkılan şapelin yerine Kraliyet Koleksiyonu'nun sergilendiği Kraliçe'nin Galerisi yapılmış ve 1962'de halka açılmıştır.",
               fotograf: 'buckingham sarayı'),
           Places(
               adi: 'Westminster Sarayı',
-              aciklama: 'Westminster Sarayı açıklaması',
+              aciklama: "Westminster Sarayı ya da Parlamento Binası (İngilizce: Palace of Westminster, Houses of Parliament) (Vestminster okunur), Birleşik Krallık'ta, Avam Kamarası ve Lordlar Kamarası'ndan oluşan İngiliz Parlamentosu'na ev sahipliği yapan yapıdır.\n\nSaray, Westminster semtinde Thames Nehri'nin kuzey yakasında, Whitehall'da bulunan diğer kamu binalarının yakınında yer alır.\n\nSarayın mimarî yapısı ve düzenlemesi oldukça karmaşıktır. Yaklaşık 1.100 odası, 100 merdiven çıkışı ve toplamda 4,8 kilometreyi bulan uzun koridorları vardır. Yapının büyük bölümüm 19. yüzyılda yapılmış olmasına karşın, bugün katafalk törenleri gibi bazı etkinliklerin düzenlendiği Westminster Hall ve Jewel Kulesi'si gibi tarihi bölümlerde hala ayaktadır.",
               fotograf: 'westminster sarayı'),
         ],
         yemekler: [
@@ -355,15 +357,15 @@ class Data {
         yerler: [
           Places(
               adi: 'Santa Monica',
-              aciklama: 'Santa Monica açıklaması',
+              aciklama: "Santa Monica, ABD'nin Kaliforniya Eyaletine bağlı Los Angeles İlçesinin Batı kıyısında yer alan bir şehirdir.\n\nİsmini, Hristiyan azize Monica'dan almıştır. Santa Monica Körfezi, kuzeyde Brentwood, batıda Los Angeles, doğuda Mar Vista ve güneydoğuda ise Venice ile komşudur. Santa Monica, birçok Hollywood starı ve yönetmeninin ilgi odağında olduğu gibi; öğrenciler, yazlıkçılar ve çevre şehirlerden gelen bireylerin de tercihidir. Santa Monica'nın nüfusu, 2010 sayımına göre 89.736'dır.",
               fotograf: 'santa monica'),
           Places(
               adi: 'Hollywood Bulvarı',
-              aciklama: 'Hollywood Bulvarı açıklaması',
+              aciklama: "Şöhret Yolu 1958'de açılmıştır. Yıldızlar Consolidated Terrazo Company adlı şirket tarafından yapılmıştır. 1978 yılında Los Angeles belediyesi, Şöhret Yolu'nu tarihi eser kapsamında koruma altına almıştır. Bir ayda yaklaşık iki yeni yıldız gelir. Her ne kadar bazı yıldızlar çalınmış olsa da, Haziran 2008'de bölgede restorasyon çalışmaları başlatıldı.\n\nGüney Kaliforniya'lı sanatçı Oliver Weissmuller tarafından tasarlanmıştır. Sonraları burası şehrin en önemli bölgelerinden biri sayılmıştır. Bulvarın güvenliği, finansman tarafından sağlanır. İlk sekiz yıldız Eylül 1958 yılında kaldırıma konulmuştur. Ocak 1959 yılında, on iki katlı İlk Federal Tasarruf ve Hollywood Kredi binası tamamlanmıştır. Bulvarın adı 1960 yılı öncesinde Şöhret Zemin olarak bilinmektedir. Sadece gerçek insanların değil, kurgu karakterlerin yıldızları da olan bu bölgede ilk yıldıza sahip olan kişi 9 Şubat 1960'ta Joanna Woodward olmuştur.\n\nTüm yıldızlar yerde, kaldırımların üstünde yerleştirilmişlerdir. Bunun tek istisnası ünlü boksör Muhammed Ali için konulan yıldızdır; Muhammed Ali 'Peygamberim Muhammed'in adını ayaklar altına koydurmam' deyip, bunda diretince organizatörler talebini kabul etmişler ve Muhammed Ali'nin yıldızını üstüne basılmaması için Kodak Theatre'ın duvarına asmışlardır.",
               fotograf: 'hollywood bulvarı'),
           Places(
               adi: 'Universal Studios',
-              aciklama: 'Universal Studios açıklaması',
+              aciklama: "Universal Studios Hollywood, California, Los Angeles County'nin San Fernando Valley bölgesinde yer alan bir film stüdyosu ve tema parkıdır. Stüdyonun yaklaşık% 70'i Universal City olarak bilinen tüzel kişiliğe sahip olmayan ilçe adasında, geri kalanı ise Los Angeles, California şehir sınırları içinde yer almaktadır. Halen kullanımda olan en eski ve en ünlü Hollywood film stüdyolarından biridir. Resmi pazarlama başlığı 'LA'nın Eğlence Başkenti' dir. Başlangıçta gerçek Universal Studios setlerinin turlarını sunmak için yaratıldı ve dünya çapında bulunan birçok tam teşekküllü Universal Studios Tema Parkının ilkidir.",
               fotograf: 'universal studios'),
         ],
         yemekler: [
