@@ -43,14 +43,17 @@ class _CityDetailState extends State<CityDetail> {
                 Container(
                   width: double.infinity,
                   height: 230,
-                  child: ClipRRect(
-                    child: Image.asset(
-                      'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg',
-                      fit: BoxFit.cover,
+                  child: Hero(
+                    tag: 'city-img-${widget.data.id}',
+                    child: ClipRRect(
+                      child: Image.asset(
+                        'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15)),
                     ),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
                   ),
                 ),
                 Positioned(

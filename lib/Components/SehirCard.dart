@@ -15,6 +15,7 @@ class SehirCard extends StatelessWidget {
       height: 180,
       width: 180,
       child: Card(
+        color: Theme.of(context).scaffoldBackgroundColor,
         elevation: 2,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
@@ -25,11 +26,14 @@ class SehirCard extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image(
-                image: AssetImage(
-                    'assets/images/${sehirData.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${sehirData.adi.toLowerCase()}.jpg'),
-                height: 240,
-                fit: BoxFit.cover,
+              Hero(
+                tag: 'city-img-${sehirData.id}',
+                child: Image(
+                  image: AssetImage(
+                      'assets/images/${sehirData.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${sehirData.adi.toLowerCase()}.jpg'),
+                  height: 240,
+                  fit: BoxFit.cover,
+                ),
               ),
               Positioned(
                 bottom: 10,
