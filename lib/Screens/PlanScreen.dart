@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class PlanScreen extends StatefulWidget {
   @override
@@ -12,17 +12,6 @@ class PlanScreen extends StatefulWidget {
 
 class _PlanScreenState extends State<PlanScreen> {
   final userData = UserData.instance;
-
-  void makeToastMessage(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.white,
-        textColor: Colors.black,
-        fontSize: 16.0);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +77,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       () {
                                         int index = userData.planList.indexOf(e, 0);
                                         userData.planList.removeAt(index);
-                                        makeToastMessage("${e.planTitle} yapılacaklar listenden kaldırıldı.");
+                                        ToastHelper().makeToastMessage("${e.planTitle} yapılacaklar listenden kaldırıldı.");
                                       },
                                     );
                                   },

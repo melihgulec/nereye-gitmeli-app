@@ -6,6 +6,7 @@ import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class CityDetail extends StatefulWidget {
   final Sehir data;
@@ -17,17 +18,6 @@ class CityDetail extends StatefulWidget {
 
 class _CityDetailState extends State<CityDetail> {
   final userData = UserData.instance;
-
-  void makeToastMessage(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.white,
-        textColor: Colors.black,
-        fontSize: 16.0);
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,10 +82,10 @@ class _CityDetailState extends State<CityDetail> {
                         if (index == -1) {
                           userData.favoritesList
                               .add(Favorite(sehir: widget.data));
-                          makeToastMessage('Favorilere eklendi.');
+                          ToastHelper().makeToastMessage('Favorilere eklendi.');
                         } else {
                           userData.favoritesList.removeAt(index);
-                          makeToastMessage('Favorilerden kaldırıldı.');
+                          ToastHelper().makeToastMessage('Favorilerden kaldırıldı.');
                         }
                       });
                     },

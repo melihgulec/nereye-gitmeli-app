@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Plan.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class AddPlanScreen extends StatefulWidget {
   @override
@@ -13,20 +13,8 @@ class AddPlanScreen extends StatefulWidget {
 
 class _AddPlanScreenState extends State<AddPlanScreen> {
   final userData = UserData.instance;
-
   String planTitleValue = "";
   String planDescriptionValue = "";
-
-  void makeToastMessage(String message) {
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: Colors.white,
-        textColor: Colors.black,
-        fontSize: 16.0);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,11 +108,11 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                         onPressed: () {
 
                           if(planTitleValue.trim() == "" && planDescriptionValue.trim() == ""){
-                            makeToastMessage('Lütfen plan başlığını ve açıklamasını doldurunuz.');
+                            ToastHelper().makeToastMessage('Lütfen plan başlığını ve açıklamasını doldurunuz.');
                           }else if(planTitleValue.trim() == ""){
-                            makeToastMessage('Lütfen plan başlığını doldurunuz.');
+                            ToastHelper().makeToastMessage('Lütfen plan başlığını doldurunuz.');
                           }else if(planDescriptionValue.trim() == ""){
-                            makeToastMessage('Lütfen plan açıklamasını doldurunuz.');
+                            ToastHelper().makeToastMessage('Lütfen plan açıklamasını doldurunuz.');
                           }else{
                             userData.planList.add(
                                 Plan(

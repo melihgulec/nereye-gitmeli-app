@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dartx/dartx.dart';
 import 'package:intl/intl.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
@@ -11,6 +10,7 @@ import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class AddTargetScreen extends StatelessWidget {
   @override
@@ -39,19 +39,11 @@ class _ContentState extends State<Content> {
   String descriptionValue = "";
   String targetHeadValue = "";
 
-  void makeToastMessage(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.white,
-      textColor: Colors.black,
-      fontSize: 16.0,
-    );
-  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
 
-  _ContentState() {
     initialSehir = sehirData.yurtici.sortedBy((element) => element.adi);
   }
 
@@ -227,12 +219,14 @@ class _ContentState extends State<Content> {
                     onPressed: () {
                       if (targetHeadValue.trim() == "" &&
                           descriptionValue == "") {
-                        makeToastMessage(
+                        ToastHelper().makeToastMessage(
                             "Lütfen açıklama ve hedef başlığını doldurunuz.");
                       } else if (targetHeadValue.trim() == "") {
-                        makeToastMessage("Lütfen hedef başlığını doldurunuz.");
+                        ToastHelper().makeToastMessage(
+                            "Lütfen hedef başlığını doldurunuz.");
                       } else if (descriptionValue.trim() == "") {
-                        makeToastMessage("Lütfen açıklamayı doldurunuz.");
+                        ToastHelper()
+                            .makeToastMessage("Lütfen açıklamayı doldurunuz.");
                       } else {
                         userData.targetList.add(
                           Target(
