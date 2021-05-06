@@ -61,6 +61,15 @@ flutter:
     - assets/images/Yurtici/Mekan/Edirne/
     - assets/images/Yurtici/Mekan/Eskişehir/
     - assets/images/Yurtici/Mekan/Muğla/
+    - assets/images/Yurtici/Yemek/Ankara/
+    - assets/images/Yurtici/Yemek/Antalya/
+    - assets/images/Yurtici/Yemek/Aydın/
+    - assets/images/Yurtici/Yemek/Bolu/
+    - assets/images/Yurtici/Yemek/Bursa/
+    - assets/images/Yurtici/Yemek/Denizli/
+    - assets/images/Yurtici/Yemek/Edirne/
+    - assets/images/Yurtici/Yemek/Eskişehir/
+    - assets/images/Yurtici/Yemek/Muğla/
     - assets/images/Yurtdisi/Mekan/Cambridge/
     - assets/images/Yurtdisi/Mekan/Los Angeles/
     - assets/images/Yurtdisi/Mekan/Londra/

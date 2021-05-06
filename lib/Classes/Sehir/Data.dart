@@ -1,4 +1,5 @@
 import 'package:nereye_gitmeli_app/Classes/Places/Places.dart';
+import 'package:nereye_gitmeli_app/Classes/Foods/Foods.dart';
 
 import '../Sehir/Sehir.dart';
 
@@ -24,7 +25,13 @@ class Data {
               adi: 'Ulu Camii',
               aciklama: 'mekani 3 açıklaması',
               fotograf: 'Ulu camii'),
-        ]),
+        ],
+      yemekler: [
+        Foods(ad: 'İskender Kebabı', aciklama: 'İskender Kebabı açıklaması', fotograf: 'iskenderkebabi'),
+        Foods(ad: 'Kemalpaşa Tatlısı', aciklama: 'Kemalpaşa Tatlısı açıklaması', fotograf: 'kemalpasatatlisi'),
+        Foods(ad: 'Pideli Köfte', aciklama: 'Pideli Köfte açıklaması', fotograf: 'pidelikofte'),
+      ]
+    ),
     Sehir(
         id: 2,
         adi: 'Bolu',
@@ -46,7 +53,13 @@ class Data {
               adi: 'Kartalkaya Kayak Merkezi',
               aciklama: 'Kartalkaya Kayak Merkezi açıklaması',
               fotograf: 'kartalkaya kayak merkezi'),
-        ]),
+        ],
+        yemekler: [
+          Foods(ad: 'Abant Kebabı', aciklama: 'Abant Kebabı açıklaması', fotograf: 'abantkebabi'),
+          Foods(ad: 'Kaldırık Dolması', aciklama: 'Kaldırık Dolması açıklaması', fotograf: 'kaldirikdolmasi'),
+          Foods(ad: 'Mengen Pilavı', aciklama: 'Mengen Pilavı açıklaması', fotograf: 'mengenpilavi'),
+        ]
+    ),
     Sehir(
         id: 3,
         adi: 'Denizli',
@@ -68,6 +81,11 @@ class Data {
               adi: 'Pamukkale Travertenleri',
               aciklama: 'Pamukkale Travertenleri açıklaması',
               fotograf: 'pamukkale travertenleri'),
+        ],
+        yemekler: [
+          Foods(ad: 'Biber Tatari', aciklama: 'Biber Tatari açıklaması', fotograf: 'bibertatari'),
+          Foods(ad: 'Börülce Böreği', aciklama: 'Börülce Böreği açıklaması', fotograf: 'borulceboregi'),
+          Foods(ad: 'Yen Böreği', aciklama: 'Yen Böreği açıklaması', fotograf: 'yenboregi'),
         ]),
     Sehir(
         id: 4,
@@ -91,6 +109,11 @@ class Data {
               adi: 'Ölüdeniz',
               aciklama: 'Ölüdeniz açıklaması',
               fotograf: 'ölüdeniz'),
+        ],
+        yemekler: [
+          Foods(ad: 'Bodrum Mantısı', aciklama: 'Bodrum Mantısı açıklaması', fotograf: 'bodrummantisi'),
+          Foods(ad: 'Sulu Muğla Kebabı', aciklama: 'sulu muğla kebabı açıklaması', fotograf: 'sulumuglakebabi'),
+          Foods(ad: 'Sündürme', aciklama: 'sündürme açıklaması', fotograf: 'sundurme'),
         ]),
     Sehir(
         id: 5,
@@ -114,6 +137,11 @@ class Data {
               adi: 'Sazova Parkı',
               aciklama: 'Sazova Parkı açıklaması',
               fotograf: 'Sazova parkı'),
+        ],
+        yemekler: [
+          Foods(ad: 'Balaban Köfte', aciklama: 'balaban köfte açıklaması', fotograf: 'balabankofte'),
+          Foods(ad: 'Çibörek', aciklama: 'çibörek açıklaması', fotograf: 'ciborek'),
+          Foods(ad: 'Yufkalı Büryan', aciklama: 'yufkalı büryan açıklaması', fotograf: 'yufkaliburyan'),
         ]),
     Sehir(
         id: 6,
@@ -138,6 +166,11 @@ class Data {
               adi: 'Karaağaç Tren Garı',
               aciklama: 'Karaağaç Tren Garı açıklaması',
               fotograf: 'karaağaç tren garı'),
+        ],
+        yemekler: [
+          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
+          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
+          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
         ]),
     Sehir(
         id: 7,
@@ -161,6 +194,11 @@ class Data {
               adi: 'Düden Şelalesi',
               aciklama: 'Düden Şelalesi açıklaması',
               fotograf: 'düden şelalesi'),
+        ],
+        yemekler: [
+          Foods(ad: 'Girit Kebabı', aciklama: 'girit kebabı açıklaması', fotograf: 'giritkebabi'),
+          Foods(ad: 'Hülüklü Çorba', aciklama: 'hülüklü çorba açıklaması', fotograf: 'huluklucorba'),
+          Foods(ad: 'Laba Dolması', aciklama: 'laba dolması açıklaması', fotograf: 'labadolmasi'),
         ]),
     Sehir(
         id: 8,
@@ -184,7 +222,13 @@ class Data {
               adi: 'Hamamönü',
               aciklama: 'Hamamönü açıklaması',
               fotograf: 'hamamönü'),
-        ]),
+        ],
+      yemekler: [
+        Foods(ad: 'Ankara Tava', aciklama: 'Ankara Tava açıklaması', fotograf: 'ankaratava'),
+        Foods(ad: 'Beypazarı Güveci', aciklama: 'Beypazarı Güveci açıklaması', fotograf: 'beypazariguveci'),
+        Foods(ad: 'Efelek Sarması', aciklama: 'Ankara Tava açıklaması', fotograf: 'efeleksarmasi'),
+      ]
+    ),
     Sehir(
         id: 9,
         adi: 'Aydın',
@@ -205,6 +249,11 @@ class Data {
               fotograf: 'tralleis'),
           Places(
               adi: 'Priene', aciklama: 'Priene açıklaması', fotograf: 'priene'),
+        ],
+        yemekler: [
+          Foods(ad: 'Çine Köftesi', aciklama: 'çine köftesi açıklaması', fotograf: 'cinekoftesi'),
+          Foods(ad: 'Keşkek', aciklama: 'tava ciğer açıklaması', fotograf: 'keskek'),
+          Foods(ad: 'Paşa Böreği', aciklama: 'yufkalı büryan açıklaması', fotograf: 'pasaboregi'),
         ]),
   ];
 
@@ -234,6 +283,11 @@ class Data {
               adi: 'Royal Ontario Müzesi',
               aciklama: 'Royal Ontario Müzesi açıklaması',
               fotograf: 'royal ontario müzesi'),
+        ],
+        yemekler: [
+          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
+          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
+          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
         ]),
     Sehir(
         id: 12,
@@ -282,6 +336,11 @@ class Data {
               adi: 'Westminster Sarayı',
               aciklama: 'Westminster Sarayı açıklaması',
               fotograf: 'westminster sarayı'),
+        ],
+        yemekler: [
+          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
+          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
+          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
         ]),
     Sehir(
         id: 14,
@@ -306,6 +365,11 @@ class Data {
               adi: 'Universal Studios',
               aciklama: 'Universal Studios açıklaması',
               fotograf: 'universal studios'),
+        ],
+        yemekler: [
+          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
+          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
+          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
         ]),
   ];
 }

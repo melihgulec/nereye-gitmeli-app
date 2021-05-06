@@ -15,6 +15,16 @@ class HomeView extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: greenColor,
+        tabBarTheme: TabBarTheme(
+          labelColor: tabBarLabelColor,
+          indicator: BoxDecoration(
+            border: Border(
+              bottom: BorderSide(
+                color: tabBarUnderlineColor,
+              )
+            )
+          )
+        ),
         textTheme: TextTheme(
           bodyText2: TextStyle(color: Colors.white),
         ),
