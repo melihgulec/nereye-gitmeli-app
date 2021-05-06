@@ -8,6 +8,7 @@ import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:nereye_gitmeli_app/Screens/Foods.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 class CityDetail extends StatefulWidget {
   final Sehir data;
   CityDetail({this.data});
@@ -17,7 +18,6 @@ class CityDetail extends StatefulWidget {
 }
 
 class _CityDetailState extends State<CityDetail> {
-
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
@@ -34,9 +34,11 @@ class _CityDetailState extends State<CityDetail> {
         body: TabBarView(
           children: [
             Content(data: widget.data),
-            Foods(sehirData: widget.data,),
+            Foods(
+              sehirData: widget.data,
+            ),
           ],
-        )
+        ),
       ),
     );
   }
@@ -117,42 +119,48 @@ class _ContentState extends State<Content> {
                   onTap: () {
                     setState(() {
                       var index = userData.favoritesList.indexWhere(
-                              (element) => element.sehir.id == widget.data.id);
+                          (element) => element.sehir.id == widget.data.id);
                       if (index == -1) {
                         userData.favoritesList
                             .add(Favorite(sehir: widget.data));
                         ToastHelper().makeToastMessage('Favorilere eklendi.');
                       } else {
                         userData.favoritesList.removeAt(index);
-                        ToastHelper().makeToastMessage('Favorilerden kaldırıldı.');
+                        ToastHelper()
+                            .makeToastMessage('Favorilerden kaldırıldı.');
                       }
                     });
                   },
                   child: Row(
                     children: [
                       InkWell(
-                        onTap: (){
+                        onTap: () {
                           _launchMapsUrl(widget.data.adi);
                         },
                         child: CircleAvatar(
                           backgroundColor: Theme.of(context).primaryColor,
-                          child: Icon(Icons.map, color: Colors.white,),
+                          child: Icon(
+                            Icons.map,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 5,
+                      ),
                       CircleAvatar(
                         backgroundColor: Theme.of(context).primaryColor,
                         child: userData.favoritesList.indexWhere((element) =>
-                        element.sehir.id == widget.data.id) !=
-                            -1
+                                    element.sehir.id == widget.data.id) !=
+                                -1
                             ? Icon(
-                          Icons.favorite,
-                          color: Colors.red,
-                        )
+                                Icons.favorite,
+                                color: Colors.red,
+                              )
                             : Icon(
-                          Icons.favorite_border,
-                          color: Colors.red,
-                        ),
+                                Icons.favorite_border,
+                                color: Colors.red,
+                              ),
                       ),
                     ],
                   ),
@@ -182,11 +190,14 @@ class _ContentState extends State<Content> {
               scrollDirection: Axis.horizontal,
               children: widget.data.yerler
                   .map(
-                    (e) => PlacesCard(
-                  placeData: e,
-                  sehirData: widget.data,
-                ),
-              )
+                    (e) => Hero(
+                      tag: 'place-img-${widget.data.adi}',
+                      child: PlacesCard(
+                        placeData: e,
+                        sehirData: widget.data,
+                      ),
+                    ),
+                  )
                   .toList(),
             ),
           ),

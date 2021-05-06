@@ -53,6 +53,7 @@ class _PlacesDetailState extends State<PlacesDetail> {
                               sehirData: widget.sehirData,
                               placeData: widget.yerData,
                               haveText: false,
+                              isClickable: false,
                             ),
                           ),
                         ),

@@ -7,12 +7,14 @@ class PlacesCard extends StatelessWidget {
   final Places placeData;
   final Sehir sehirData;
   final bool haveText;
+  final bool isClickable;
 
   PlacesCard({
         Key key,
         this.placeData,
         this.sehirData,
         this.haveText,
+        this.isClickable
       }) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -26,7 +28,11 @@ class PlacesCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: InkWell(
-          onTap: () => Navigator.pushNamed(context, myRouteNames.placesDetailRoute, arguments:[placeData, sehirData]),
+          onTap: () {
+            if(isClickable == null){
+              Navigator.pushNamed(context, myRouteNames.placesDetailRoute, arguments:[placeData, sehirData]);
+            }
+          },
           child: Stack(
             alignment: Alignment.center,
             children: [
