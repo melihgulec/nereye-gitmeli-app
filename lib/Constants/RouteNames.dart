@@ -7,3 +7,4 @@ const addTargetRoute = "/addTarget";
 const hakkindaRoute = "/hakkinda";
 const planRoute = "/plan";
 const addPlanRoute = "/addPlan";
+const placesDetailRoute = "/placesDetail";

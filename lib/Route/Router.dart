@@ -9,11 +9,13 @@ import 'package:nereye_gitmeli_app/Screens/NotFoundScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/AddTargetScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/PlanScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/AddPlanScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/PlacesDetail.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart';
 
 class Router{
   static Route<dynamic> generateRoute(RouteSettings settings){
+    List<dynamic> args = (settings.arguments is List<dynamic> ? settings.arguments : null);
     switch(settings.name){
       case homeRoute: return MaterialPageRoute(builder: (context) => HomeScreen());
       case cityDetailRoute: return MaterialPageRoute(builder: (context) => CityDetail(data: settings.arguments,));
@@ -24,6 +26,7 @@ class Router{
       case hakkindaRoute: return MaterialPageRoute(builder: (context) => Hakkinda());
       case planRoute: return MaterialPageRoute(builder: (context) => PlanScreen());
       case addPlanRoute: return MaterialPageRoute(builder: (context) => AddPlanScreen());
+      case placesDetailRoute: return MaterialPageRoute(builder: (context) => PlacesDetail(yerData: args[0], sehirData: args[1],));
       default:
         return MaterialPageRoute(builder: (context) => NotFoundScreen());
     }

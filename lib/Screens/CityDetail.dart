@@ -7,6 +7,7 @@ import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:nereye_gitmeli_app/Screens/Foods.dart';
+import 'package:url_launcher/url_launcher.dart';
 class CityDetail extends StatefulWidget {
   final Sehir data;
   CityDetail({this.data});
@@ -25,7 +26,7 @@ class _CityDetailState extends State<CityDetail> {
           title: Text('Nereye gitmeli: ${widget.data.adi}'),
           bottom: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.map)),
+              Tab(icon: Icon(Icons.explore)),
               Tab(icon: Icon(Icons.fastfood)),
             ],
           ),
@@ -52,6 +53,13 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   final userData = UserData.instance;
+
+  void _launchMapsUrl(String addr) async {
+    print(addr.replaceAll(' ', '+'));
+    final url =
+        'https://www.google.com/maps/search/${addr.replaceAll(' ', '+')}/';
+    await launch(url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,19 +128,33 @@ class _ContentState extends State<Content> {
                       }
                     });
                   },
-                  child: CircleAvatar(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    child: userData.favoritesList.indexWhere((element) =>
-                    element.sehir.id == widget.data.id) !=
-                        -1
-                        ? Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                    )
-                        : Icon(
-                      Icons.favorite_border,
-                      color: Colors.red,
-                    ),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: (){
+                          _launchMapsUrl(widget.data.adi);
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          child: Icon(Icons.map, color: Colors.white,),
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      CircleAvatar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        child: userData.favoritesList.indexWhere((element) =>
+                        element.sehir.id == widget.data.id) !=
+                            -1
+                            ? Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        )
+                            : Icon(
+                          Icons.favorite_border,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               )

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Places/Places.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
+import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 class PlacesCard extends StatelessWidget {
   final Places placeData;
   final Sehir sehirData;
+  final bool haveText;
 
   PlacesCard({
         Key key,
         this.placeData,
-        this.sehirData
+        this.sehirData,
+        this.haveText,
       }) : super(key: key);
 
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class PlacesCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
         ),
         child: InkWell(
-          onTap: () => print(''),
+          onTap: () => Navigator.pushNamed(context, myRouteNames.placesDetailRoute, arguments:[placeData, sehirData]),
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -42,7 +45,7 @@ class PlacesCard extends StatelessWidget {
                     Container(
                       width: double.infinity,
                       child: Text(
-                        placeData.adi,
+                        haveText == null ? '${placeData.adi}' : '',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,

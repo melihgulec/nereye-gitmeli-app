@@ -26,6 +26,7 @@ dependencies:
   dartx: any
   intl: ^0.17.0
   fluttertoast: ^7.1.6
+  url_launcher: ^6.0.3
 
 
   # The following adds the Cupertino Icons font to your application.
