@@ -7,6 +7,7 @@ import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:nereye_gitmeli_app/Screens/Foods.dart';
+import 'package:nereye_gitmeli_app/Screens/CityCommentsScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CityDetail extends StatefulWidget {
@@ -20,13 +21,14 @@ class CityDetail extends StatefulWidget {
 class _CityDetailState extends State<CityDetail> {
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text('Nereye gitmeli: ${widget.data.adi}'),
           bottom: TabBar(
             tabs: [
               Tab(icon: Icon(Icons.explore)),
+              Tab(icon: Icon(Icons.comment)),
               Tab(icon: Icon(Icons.fastfood)),
             ],
           ),
@@ -34,6 +36,7 @@ class _CityDetailState extends State<CityDetail> {
         body: TabBarView(
           children: [
             Content(data: widget.data),
+            CityCommentsScreen(),
             Foods(
               sehirData: widget.data,
             ),
