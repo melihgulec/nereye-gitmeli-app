@@ -86,8 +86,8 @@ class _TargetDetailState extends State<TargetDetail> {
                   Expanded(
                     child: Center(
                       child: Text(
-                        widget.hedef.targetHead +"\n\nŞehir: "+widget.hedef.targetDestinationCity.adi,
-                        style: TextStyle(fontSize: 22),
+                        widget.hedef.targetHead +"\n\nHedef: "+widget.hedef.targetDestinationCity.adi+", "+widget.hedef.targetDestinationCity.ulke,
+                        style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.center,
                       ),
                     ),

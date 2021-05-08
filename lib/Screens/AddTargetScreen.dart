@@ -87,7 +87,9 @@ class _ContentState extends State<Content> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextField(
+                            maxLength: 30,
                             decoration: InputDecoration(
+                              counterStyle: TextStyle(color: Colors.white),
                               hintText: 'Burayı mutlaka görmek istiyorum!',
                               hintStyle:
                                   TextStyle(color: Colors.grey, fontSize: 12),
