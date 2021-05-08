@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ToastHelper{
-  String message;
-  var gravity;
-  var toastLength;
-  Color backgroundColor;
-  Color textColor;
-  double fontSize;
+  String _message;
+  var _gravity;
+  var _toastLength;
+  Color _backgroundColor;
+  Color _textColor;
+  double _fontSize;
 
   static final ToastHelper _instance = ToastHelper._internal();
 
@@ -16,24 +16,24 @@ class ToastHelper{
   }
 
   ToastHelper._internal() {
-    message = "";
-    toastLength = Toast.LENGTH_SHORT;
-    gravity = ToastGravity.BOTTOM;
-    backgroundColor = Colors.white;
-    textColor = Colors.black;
-    fontSize = 16.0;
+    _message = "";
+    _toastLength = Toast.LENGTH_SHORT;
+    _gravity = ToastGravity.BOTTOM;
+    _backgroundColor = Colors.white;
+    _textColor = Colors.black;
+    _fontSize = 16.0;
   }
 
 
   void makeToastMessage(String message, {var gravity, Color backgroundColor, Color textColor, double fontSize}) {
     Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: gravity == null ? this.gravity : gravity,
-        timeInSecForIosWeb: 1,
-        backgroundColor: backgroundColor == null ? this.backgroundColor : backgroundColor,
-        textColor: textColor == null ? this.textColor : textColor,
-        fontSize: fontSize == null ? this.fontSize : fontSize,
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: gravity == null ? this._gravity : gravity,
+      timeInSecForIosWeb: 1,
+      backgroundColor: backgroundColor == null ? this._backgroundColor : backgroundColor,
+      textColor: textColor == null ? this._textColor : textColor,
+      fontSize: fontSize == null ? this._fontSize : fontSize,
     );
   }
 }

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:nereye_gitmeli_app/Constants/Colors.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +30,8 @@ class LoginScreen extends StatelessWidget {
                   Text(
                     'Nereye Gitmeli?',
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,),
                   ),
                   SizedBox(
                     height: 25,
@@ -45,8 +50,8 @@ class LoginScreen extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.white)),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                          color: Color(0xff2CA1C0),
-                        ))),
+                              color: Color(0xff2CA1C0),
+                            ))),
                   ),
                   SizedBox(
                     height: 15,
@@ -65,8 +70,8 @@ class LoginScreen extends StatelessWidget {
                             borderSide: BorderSide(color: Colors.white)),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                          color: Color(0xff2CA1C0),
-                        ))),
+                              color: Color(0xff2CA1C0),
+                            ))),
                   ),
                   SizedBox(
                     height: 15,

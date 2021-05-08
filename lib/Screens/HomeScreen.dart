@@ -20,8 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Nereye Gitmeli?'),
         leading: Icon(Icons.explore),
-        // Veritabanı işlemleri öğrenilince LOGIN işlemleri için bu kod açılacak.
-        /*actions: [
+        actions: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: IconButton(
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-        ],*/
+        ],
       ),
       body: Content(),
     );
@@ -145,8 +144,8 @@ class Content extends StatelessWidget {
                     children: sehirData.yurtici
                         .sortedBy((element) => element.adi)
                         .map((item) => SehirCard(
-                              sehirData: item,
-                            ))
+                      sehirData: item,
+                    ))
                         .toList(),
                   ),
                 ),
