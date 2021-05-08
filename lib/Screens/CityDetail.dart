@@ -190,12 +190,9 @@ class _ContentState extends State<Content> {
               scrollDirection: Axis.horizontal,
               children: widget.data.yerler
                   .map(
-                    (e) => Hero(
-                      tag: 'place-img-${widget.data.adi}',
-                      child: PlacesCard(
-                        placeData: e,
-                        sehirData: widget.data,
-                      ),
+                    (e) => PlacesCard(
+                      placeData: e,
+                      sehirData: widget.data,
                     ),
                   )
                   .toList(),
