@@ -10,3 +10,5 @@ const addPlanRoute = "/addPlan";
 const placesDetailRoute = "/placesDetail";
 const cityCommentsRoute = "/cityComments";
 const targetDetailRoute = "/targetDetail";
+const expensesRoute = "/expenses";
+const addExpensesRoute = "/addExpenses";

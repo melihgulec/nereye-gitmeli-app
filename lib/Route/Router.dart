@@ -12,6 +12,7 @@ import 'package:nereye_gitmeli_app/Screens/AddPlanScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/PlacesDetail.dart';
 import 'package:nereye_gitmeli_app/Screens/CityCommentsScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/TargetDetail.dart';
+import 'package:nereye_gitmeli_app/Screens/ExpensesScreen.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart';
 
@@ -31,6 +32,7 @@ class Router{
       case placesDetailRoute: return MaterialPageRoute(builder: (context) => PlacesDetail(yerData: args[0], sehirData: args[1],));
       case cityCommentsRoute: return MaterialPageRoute(builder: (context) => CityCommentsScreen());
       case targetDetailRoute: return MaterialPageRoute(builder: (context) => TargetDetail(hedef: settings.arguments,));
+      case expensesRoute: return MaterialPageRoute(builder: (context) => ExpensesScreen());
       default:
         return MaterialPageRoute(builder: (context) => NotFoundScreen());
     }

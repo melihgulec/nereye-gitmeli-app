@@ -115,22 +115,43 @@ class Content extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  child: Card(
-                    color: Theme.of(context).primaryColor,
-                    child: ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, myRouteNames.planRoute),
-                      leading: Icon(
-                        Icons.bookmark_outlined,
-                        color: Colors.white,
-                      ),
-                      title: Text(
-                        'Planlama',
-                        style: TextStyle(color: Colors.white),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Card(
+                        color: Theme.of(context).primaryColor,
+                        child: ListTile(
+                          onTap: () => Navigator.pushNamed(
+                              context, myRouteNames.planRoute),
+                          leading: Icon(
+                            Icons.bookmark_outlined,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Planlama',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: Card(
+                        color: Theme.of(context).primaryColor,
+                        child: ListTile(
+                          onTap: () => Navigator.pushNamed(
+                              context, myRouteNames.expensesRoute),
+                          leading: Icon(
+                            Icons.bookmark_outlined,
+                            color: Colors.white,
+                          ),
+                          title: Text(
+                            'Gezi Bütçesi',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 15,

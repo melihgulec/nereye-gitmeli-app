@@ -10,6 +10,7 @@ import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
+import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class AddTargetScreen extends StatelessWidget {
@@ -31,6 +32,7 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   final userData = UserData.instance;
+  DbHelper _dbHelper;
   Data sehirData = Data();
   String dropdownValue = "Bursa";
   int dropdownKonumValue = 1;
@@ -43,6 +45,7 @@ class _ContentState extends State<Content> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _dbHelper = DbHelper();
 
     initialSehir = sehirData.yurtici.sortedBy((element) => element.adi);
   }
@@ -58,6 +61,22 @@ class _ContentState extends State<Content> {
       for (int i = 0; i < sehirData.yurtdisi.length; i++) {
         if (sehirData.yurtdisi[i].adi == sehirAdi) {
           return sehirData.yurtdisi[i];
+        }
+      }
+    }
+  }
+
+  int findCityId(String sehirAdi, int konum) {
+    if (konum == 1) {
+      for (int i = 0; i < sehirData.yurtici.length; i++) {
+        if (sehirData.yurtici[i].adi == sehirAdi) {
+          return sehirData.yurtici[i].id;
+        }
+      }
+    } else {
+      for (int i = 0; i < sehirData.yurtdisi.length; i++) {
+        if (sehirData.yurtdisi[i].adi == sehirAdi) {
+          return sehirData.yurtdisi[i].id;
         }
       }
     }
@@ -246,22 +265,21 @@ class _ContentState extends State<Content> {
                         ToastHelper()
                             .makeToastMessage("Lütfen açıklamayı doldurunuz.");
                       } else {
-                        userData.targetList.add(
-                          Target(
-                            targetDestination: dropdownKonumValue == 1
-                                ? 'Yurtiçi'
-                                : 'Yurtdışı',
-                            targetDestinationCity:
-                                findCity(dropdownValue, dropdownKonumValue),
-                            targetDescription: descriptionValue,
-                            targetHead: targetHeadValue,
-                            targetDate: DateFormat('dd.MM.yyyy HH:mm')
-                                .format(DateTime.now()),
-                          ),
+                        _dbHelper.insertTarget(
+                            Target(
+                              targetDestination: dropdownKonumValue == 1
+                                  ? 'Yurtiçi'
+                                  : 'Yurtdışı',
+                              targetDestinationCityId: findCityId(dropdownValue, dropdownKonumValue),
+                              targetDescription: descriptionValue,
+                              targetHead: targetHeadValue,
+                              targetDate: DateFormat('dd.MM.yyyy HH:mm')
+                                  .format(DateTime.now()),
+                            )
                         );
+
                         Navigator.pushReplacementNamed(
-                            context, myRouteNames.targetRoute,
-                            arguments: userData);
+                            context, myRouteNames.targetRoute);
                       }
                     },
                   )
