@@ -50,35 +50,13 @@ class _ContentState extends State<Content> {
     initialSehir = sehirData.yurtici.sortedBy((element) => element.adi);
   }
 
-  Sehir findCity(String sehirAdi, int konum) {
-    if (konum == 1) {
-      for (int i = 0; i < sehirData.yurtici.length; i++) {
-        if (sehirData.yurtici[i].adi == sehirAdi) {
-          return sehirData.yurtici[i];
-        }
-      }
-    } else {
-      for (int i = 0; i < sehirData.yurtdisi.length; i++) {
-        if (sehirData.yurtdisi[i].adi == sehirAdi) {
-          return sehirData.yurtdisi[i];
-        }
-      }
-    }
-  }
-
-  int findCityId(String sehirAdi, int konum) {
-    if (konum == 1) {
-      for (int i = 0; i < sehirData.yurtici.length; i++) {
-        if (sehirData.yurtici[i].adi == sehirAdi) {
-          return sehirData.yurtici[i].id;
-        }
-      }
-    } else {
-      for (int i = 0; i < sehirData.yurtdisi.length; i++) {
-        if (sehirData.yurtdisi[i].adi == sehirAdi) {
-          return sehirData.yurtdisi[i].id;
-        }
-      }
+  int findCityId(String sehirAdi) {
+    int index = sehirData.yurtici.indexWhere((element) => element.adi == sehirAdi);
+    if(index == -1){
+      index = sehirData.yurtdisi.indexWhere((element) => element.adi == sehirAdi);
+      return sehirData.yurtdisi[index].id;
+    }else{
+      return sehirData.yurtici[index].id;
     }
   }
 
@@ -270,7 +248,7 @@ class _ContentState extends State<Content> {
                               targetDestination: dropdownKonumValue == 1
                                   ? 'Yurtiçi'
                                   : 'Yurtdışı',
-                              targetDestinationCityId: findCityId(dropdownValue, dropdownKonumValue),
+                              targetDestinationCityId: findCityId(dropdownValue),
                               targetDescription: descriptionValue,
                               targetHead: targetHeadValue,
                               targetDate: DateFormat('dd.MM.yyyy HH:mm')

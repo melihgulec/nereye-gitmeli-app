@@ -5,6 +5,7 @@ import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
+import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:nereye_gitmeli_app/Screens/Foods.dart';
 import 'package:nereye_gitmeli_app/Screens/CityCommentsScreen.dart';
@@ -58,12 +59,20 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   final userData = UserData.instance;
+  DbHelper _dbHelper;
 
   void _launchMapsUrl(String addr) async {
     print(addr.replaceAll(' ', '+'));
     final url =
         'https://www.google.com/maps/search/${addr.replaceAll(' ', '+')}/';
     await launch(url);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _dbHelper = DbHelper();
   }
 
   @override
@@ -118,55 +127,63 @@ class _ContentState extends State<Content> {
               Positioned(
                 top: 180,
                 right: 16,
-                child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      var index = userData.favoritesList.indexWhere(
-                          (element) => element.sehir.id == widget.data.id);
-                      if (index == -1) {
-                        userData.favoritesList
-                            .add(Favorite(sehir: widget.data));
-                        ToastHelper().makeToastMessage('Favorilere eklendi.');
-                      } else {
-                        userData.favoritesList.removeAt(index);
-                        ToastHelper()
-                            .makeToastMessage('Favorilerden kaldırıldı.');
-                      }
-                    });
-                  },
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          _launchMapsUrl(widget.data.adi);
-                        },
-                        child: CircleAvatar(
-                          backgroundColor: Theme.of(context).primaryColor,
-                          child: Icon(
-                            Icons.map,
-                            color: Colors.white,
-                          ),
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        _launchMapsUrl(widget.data.adi);
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        child: Icon(
+                          Icons.map,
+                          color: Colors.white,
                         ),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        child: userData.favoritesList.indexWhere((element) =>
-                                    element.sehir.id == widget.data.id) !=
-                                -1
-                            ? Icon(
-                                Icons.favorite,
-                                color: Colors.red,
-                              )
-                            : Icon(
-                                Icons.favorite_border,
-                                color: Colors.red,
-                              ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    FutureBuilder(
+                        future: _dbHelper.getFavoritesByCityId(widget.data.id),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData)
+                            return Icon(Icons.warning_amber_outlined);
+                          if (snapshot.data.isEmpty)
+                            return CircleAvatar(
+                                backgroundColor: Theme.of(context).primaryColor,
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.favorite_border_rounded,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _dbHelper.insertFavorite(
+                                          Favorite(cityId: widget.data.id));
+
+                                      ToastHelper().makeToastMessage(
+                                          'Favorilere eklendi.');
+                                    });
+                                  },
+                                ));
+                          return CircleAvatar(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    _dbHelper.removeFavorite(widget.data.id);
+                                    ToastHelper().makeToastMessage(
+                                        'Favorilerden kaldırıldı.');
+                                  });
+                                },
+                              ));
+                        })
+                  ],
                 ),
               )
             ],

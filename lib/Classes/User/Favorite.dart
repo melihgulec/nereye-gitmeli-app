@@ -1,7 +1,15 @@
-import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
-
 class Favorite{
-  Sehir sehir;
+  int cityId;
 
-  Favorite({this.sehir});
+  Favorite({this.cityId});
+
+  Map<String, dynamic> toMap(){ // veri eklemek için.
+    var map = Map<String, dynamic>();
+    map["cityId"] = cityId;
+    return map;
+  }
+
+  Favorite.fromMap(Map<String, dynamic> map){
+    cityId = map['cityId'];
+  }
 }

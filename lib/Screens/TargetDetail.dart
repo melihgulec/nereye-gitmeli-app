@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
@@ -24,20 +23,12 @@ class _TargetDetailState extends State<TargetDetail> {
 
   Sehir findCityById(int cityId) {
     bool control = false;
-    for (int i = 0; i < sehirData.yurtici.length; i++) {
-      if (cityId == sehirData.yurtici[i].id) {
-        control = true;
-        return sehirData.yurtici[i];
-      }
-    }
-
-    if(control == false){
-      for (int i = 0; i < sehirData.yurtdisi.length; i++) {
-        if (cityId == sehirData.yurtdisi[i].id) {
-          control = true;
-          return sehirData.yurtdisi[i];
-        }
-      }
+    int index = sehirData.yurtici.indexWhere((element) => element.id == cityId);
+    if(index == -1){
+      index = sehirData.yurtdisi.indexWhere((element) => element.id == cityId);
+      return sehirData.yurtdisi[index];
+    }else{
+      return sehirData.yurtici[index];
     }
   }
 
