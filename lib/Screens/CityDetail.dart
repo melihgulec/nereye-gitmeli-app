@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
@@ -58,7 +57,6 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
-  final userData = UserData.instance;
   DbHelper _dbHelper;
 
   void _launchMapsUrl(String addr) async {

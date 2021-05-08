@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 
@@ -10,8 +9,6 @@ class TargetScreen extends StatefulWidget {
 }
 
 class _TargetScreenState extends State<TargetScreen> {
-  final userData = UserData.instance;
-
   DbHelper _dbHelper;
 
   @override

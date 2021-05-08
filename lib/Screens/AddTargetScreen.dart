@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
@@ -31,7 +30,6 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
-  final userData = UserData.instance;
   DbHelper _dbHelper;
   Data sehirData = Data();
   String dropdownValue = "Bursa";

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 
@@ -12,7 +11,6 @@ class FavoritesScreen extends StatefulWidget {
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  final userData = UserData.instance;
   DbHelper _dbHelper;
 
   @override
