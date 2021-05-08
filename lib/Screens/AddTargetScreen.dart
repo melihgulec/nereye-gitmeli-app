@@ -47,6 +47,22 @@ class _ContentState extends State<Content> {
     initialSehir = sehirData.yurtici.sortedBy((element) => element.adi);
   }
 
+  Sehir findCity(String sehirAdi, int konum) {
+    if (konum == 1) {
+      for (int i = 0; i < sehirData.yurtici.length; i++) {
+        if (sehirData.yurtici[i].adi == sehirAdi) {
+          return sehirData.yurtici[i];
+        }
+      }
+    } else {
+      for (int i = 0; i < sehirData.yurtdisi.length; i++) {
+        if (sehirData.yurtdisi[i].adi == sehirAdi) {
+          return sehirData.yurtdisi[i];
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -233,7 +249,8 @@ class _ContentState extends State<Content> {
                             targetDestination: dropdownKonumValue == 1
                                 ? 'Yurtiçi'
                                 : 'Yurtdışı',
-                            targetDestinationCity: dropdownValue,
+                            targetDestinationCity:
+                                findCity(dropdownValue, dropdownKonumValue),
                             targetDescription: descriptionValue,
                             targetHead: targetHeadValue,
                             targetDate: DateFormat('dd.MM.yyyy HH:mm')

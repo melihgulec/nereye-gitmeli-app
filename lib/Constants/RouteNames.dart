@@ -9,3 +9,4 @@ const planRoute = "/plan";
 const addPlanRoute = "/addPlan";
 const placesDetailRoute = "/placesDetail";
 const cityCommentsRoute = "/cityComments";
+const targetDetailRoute = "/targetDetail";

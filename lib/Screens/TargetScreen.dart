@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
-import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class TargetScreen extends StatefulWidget {
   @override
@@ -38,26 +37,14 @@ class _TargetScreenState extends State<TargetScreen> {
                     .map(
                       (e) => Card(
                         child: ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushReplacementNamed(context, myRouteNames.targetDetailRoute, arguments: e);
+                          },
                           tileColor: Colors.white,
-                          trailing: Container(
-                            height: 40,
-                            width: 40,
-                            color: Theme.of(context).primaryColor,
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.delete_forever,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                setState(
-                                  () {
-                                    int index = userData.targetList.indexOf(e, 0);
-                                    userData.targetList.removeAt(index);
-                                    ToastHelper().makeToastMessage("${e.targetHead} hedeflerinden kaldırıldı.");
-                                  },
-                                );
-                              },
+                          trailing: IconButton(
+                            icon: Icon(
+                              Icons.chevron_right,
+                              color: Colors.black,
                             ),
                           ),
                           leading: Icon(
@@ -65,8 +52,6 @@ class _TargetScreenState extends State<TargetScreen> {
                             color: Theme.of(context).primaryColor,
                           ),
                           title: Text(e.targetHead),
-                          subtitle: Text(
-                              "Hedef Şehir: ${e.targetDestinationCity}\n\n${e.targetDescription}\n\n${e.targetDate.toString()}"),
                         ),
                       ),
                     )
