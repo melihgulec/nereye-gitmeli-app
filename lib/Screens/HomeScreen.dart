@@ -41,16 +41,103 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Container(
+              width: double.infinity,
+              child: DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'Nereye Gitmeli?\n\nMenü',
+                    style: TextStyle(fontSize: 25),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text(
+                'Ana sayfa',
+              ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.assignment_rounded),
+              onTap: () {
+                Navigator.pushNamed(context, myRouteNames.targetRoute);
+              },
+              title: Text(
+                'Hedeflerim',
+              ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.bookmark_outlined),
+              onTap: () {
+                Navigator.pushNamed(context, myRouteNames.planRoute);
+              },
+              title: Text(
+                'Planlarım',
+              ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite),
+              onTap: () {
+                Navigator.pushNamed(context, myRouteNames.favoritesRoute);
+              },
+              title: Text(
+                'Favorilerim',
+              ),
+            ),
+            Divider(
+              height: 5,
+              color: Colors.white,
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline),
+              onTap: () {
+                showAboutDialog(
+                    context: context,
+                    applicationIcon: FlutterLogo(),
+                    applicationName: 'Nereye Gitmeli',
+                    applicationVersion: '1.0.0',
+                    children: [
+                      Text(
+                          'Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193301059 numaralı Melih GÜLEÇ tarafından 25 Haziran 2021 günü yapılmıştır.'),
+                    ]);
+              },
+              title: Text(
+                'Hakkında',
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Nereye Gitmeli?'),
-        leading: Icon(Icons.explore),
+        //leading: Icon(Icons.explore),
         actions: [
           isLogged
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: IconButton(
-                    icon: Icon(Icons.person_search, size: 30),
-                    onPressed: (){
+                    icon: Tooltip(
+                      message: 'Profilin',
+                      child: Icon(Icons.person_search, size: 30),
+                    ),
+                    onPressed: () {
                       Navigator.pushNamed(context, myRouteNames.profileRoute);
                     },
                   ),
@@ -105,10 +192,17 @@ class Content extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                  child: Text(
-                    'Merhaba,\nBugün nereyi keşfedeceksin?',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Merhaba,\nBugün nereyi keşfedeceksin?',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      WavingHandEmojiWidget(),
+                    ],
                   ),
                 ),
                 Row(
@@ -237,3 +331,42 @@ class Content extends StatelessWidget {
     );
   }
 }
+
+class WavingHandEmojiWidget extends StatefulWidget {
+  @override
+  _WavingHandEmojiWidgetState createState() => _WavingHandEmojiWidgetState();
+}
+
+class _WavingHandEmojiWidgetState extends State<WavingHandEmojiWidget> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Animation<Offset> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: new Duration(seconds: 1),);
+    _animation = Tween(
+      begin: Offset.zero,
+      end: Offset(0, 0.1),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _controller.repeat(reverse: true);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: _animation,
+      child: Text(
+        '✋',
+        style: TextStyle(fontSize: 50),
+      ),
+    );
+  }
+}
+

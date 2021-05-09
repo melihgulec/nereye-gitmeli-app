@@ -16,14 +16,16 @@ class CityCommentsScreen extends StatefulWidget {
 }
 
 class _CityCommentsScreenState extends State<CityCommentsScreen> {
-  CollectionReference commentsCollection = FirebaseFirestore.instance.collection('Comments');
+  CollectionReference commentsCollection =
+      FirebaseFirestore.instance.collection('Comments');
+  final GlobalKey<AnimatedListState> _key = GlobalKey();
   SharedPreferences prefs;
   bool isLogged = false;
   String textVal = "";
   String userName = "";
   var _controller = TextEditingController();
 
-  Future getPrefs() async{
+  Future getPrefs() async {
     prefs = await SharedPreferences.getInstance();
 
     setState(() {
@@ -39,16 +41,14 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
     getPrefs();
   }
 
-  void addComment(String comment){
+  void addComment(String comment) {
     _controller.clear();
-    commentsCollection.add(
-        {
-          'cityid' : widget.sehirData.id,
-          'comment': textVal,
-          'name': userName,
-          'type': 1
-        }
-    );
+    commentsCollection.add({
+      'cityid': widget.sehirData.id,
+      'comment': textVal,
+      'name': userName,
+      'type': 1
+    });
   }
 
   @override
@@ -67,41 +67,42 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex:1,
+                      flex: 1,
                       child: CircleAvatar(
                         child: Icon(Icons.person),
                       ),
                     ),
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Expanded(
-                      flex:9,
+                      flex: 9,
                       child: Column(
                         children: [
                           Container(
                             constraints: BoxConstraints(maxHeight: 100),
                             child: TextField(
                               controller: _controller,
-                              onChanged: (value){
+                              onChanged: (value) {
                                 textVal = value;
                               },
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               enabled: isLogged,
                               decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.green
-                                    ),
-                                  ),
-                                  hintText: 'yorum yazmak için tıklayın...',
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.green),
+                                ),
+                                hintText: 'yorum yazmak için tıklayın...',
                               ),
                             ),
                           ),
                           Container(
-                            width:double.infinity,
+                            width: double.infinity,
                             child: ElevatedButton(
                               child: Text('Yorumu gönder'),
-                              onPressed: isLogged ? ()=> addComment('comment') : null,
+                              onPressed:
+                                  isLogged ? () => addComment('comment') : null,
                             ),
                           ),
                         ],
@@ -115,24 +116,31 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
               height: 15,
             ),
             StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance.collection('Comments').where('cityid', isEqualTo: widget.sehirData.id).snapshots(),
-              builder: (context, snapshot){
-                if(snapshot.hasData){
+              stream: FirebaseFirestore.instance
+                  .collection('Comments')
+                  .where('cityid', isEqualTo: widget.sehirData.id)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
                   List<DocumentSnapshot> items = snapshot.data.docs;
                   return Flexible(
                     child: ListView.builder(
                       itemCount: items.length,
-                      itemBuilder: (context, index){
+                      itemBuilder: (context, index) {
                         return Column(
                           children: [
-                            CommentWidget(userName: items[index].data()['name'], comment: items[index].data()['comment']),
-                            SizedBox(height: 15,),
+                            CommentWidget(
+                                userName: items[index].data()['name'],
+                                comment: items[index].data()['comment']),
+                            SizedBox(
+                              height: 15,
+                            ),
                           ],
                         );
                       },
                     ),
                   );
-                }else{
+                } else {
                   return CircularProgressIndicator();
                 }
               },

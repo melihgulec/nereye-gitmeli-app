@@ -52,19 +52,20 @@ class _TargetDetailState extends State<TargetDetail> {
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: IconButton(
               icon: GestureDetector(
+                onTap: (){
+                  _dbHelper.removeTarget(widget.hedef.id);
+                  ToastHelper().makeToastMessage("${widget.hedef.targetHead} hedeflerinden kaldırıldı.");
+                  Navigator.pushReplacementNamed(context, myRouteNames.targetRoute);
+                },
                 onTapCancel: (){
                   ToastHelper().makeToastMessage('Hedef silinmedi.');
                 },
                 child: Icon(
                   Icons.delete_forever,
                   size: 30,
+                  color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                _dbHelper.removeTarget(widget.hedef.id);
-                ToastHelper().makeToastMessage("${widget.hedef.targetHead} hedeflerinden kaldırıldı.");
-                Navigator.pushReplacementNamed(context, myRouteNames.targetRoute);
-              },
             ),
           ),
         ],
@@ -113,10 +114,14 @@ class _TargetDetailState extends State<TargetDetail> {
                   )),
                   Expanded(
                     child: Center(
-                      child: Text(
-                        "${widget.hedef.targetHead}\n\nHedef: ${currentSehir.adi}, ${currentSehir.ulke}",
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
+                      child: Wrap(
+                        children:[
+                          Text(
+                            "${widget.hedef.targetHead}\n\nHedef: ${currentSehir.adi}, ${currentSehir.ulke}",
+                            style: TextStyle(fontSize: 18),
+                            textAlign: TextAlign.center,
+                          ),
+                        ]
                       ),
                     ),
                   ),

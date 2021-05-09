@@ -23,7 +23,10 @@ class _TargetScreenState extends State<TargetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Tooltip(
+          message: 'Yeni hedef ekle',
+          child: Icon(Icons.add),
+        ),
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           Navigator.pushReplacementNamed(context, myRouteNames.addTargetRoute);
@@ -37,7 +40,8 @@ class _TargetScreenState extends State<TargetScreen> {
         child: FutureBuilder(
           future: _dbHelper.getTargets(),
           builder: (context, snapshot) {
-            if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+            if (!snapshot.hasData)
+              return Center(child: CircularProgressIndicator());
             if (snapshot.data.isEmpty)
               return Center(
                 child: Text(
@@ -51,27 +55,64 @@ class _TargetScreenState extends State<TargetScreen> {
               itemBuilder: (context, index) {
                 Target target = snapshot.data[index];
                 return Card(
-                  child: ListTile(
-                    onLongPress: (){
-                      ToastHelper().makeToastMessage('${target.targetDate} tarihinde oluşturuldu.');
+                  child: Dismissible(
+                    onDismissed: (direction) {
+                      _dbHelper.removeTarget(target.id);
+                      ToastHelper().makeToastMessage(
+                          "${target.targetHead} hedeflerinden kaldırıldı.");
                     },
-                    onTap: () {
-                      Navigator.pushReplacementNamed(
-                          context, myRouteNames.targetDetailRoute,
-                          arguments: target);
-                    },
-                    tileColor: Colors.white,
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.chevron_right,
-                        color: Colors.black,
+                    background: Container(
+                      color: Colors.red,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(
+                            Icons.cancel,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
                       ),
                     ),
-                    leading: Icon(
-                      Icons.assignment_rounded,
-                      color: Theme.of(context).primaryColor,
+                    secondaryBackground: Container(
+                      color: Colors.red,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(
+                            Icons.cancel,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
                     ),
-                    title: Text('${target.id} - ${target.targetHead}'),
+                    key: ValueKey(target.id),
+                    child: ListTile(
+                      onLongPress: () {
+                        ToastHelper().makeToastMessage(
+                            '${target.targetDate} tarihinde oluşturuldu.');
+                      },
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, myRouteNames.targetDetailRoute,
+                            arguments: target);
+                      },
+                      tileColor: Colors.white,
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.chevron_right,
+                          color: Colors.black,
+                        ),
+                      ),
+                      leading: Icon(
+                        Icons.assignment_rounded,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      title: Text('${target.id} - ${target.targetHead}'),
+                    ),
                   ),
                 );
               },

@@ -12,7 +12,7 @@ class Hakkinda extends StatelessWidget {
         padding: const EdgeInsets.all(25.0),
         child: Center(
           child: Text(
-            'Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193301059 numaralı Melih GÜLEÇ tarafından 30 Nisan 2021 günü yapılmıştır.',
+            'Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193301059 numaralı Melih GÜLEÇ tarafından 25 Haziran 2021 günü yapılmıştır.',
             textAlign: TextAlign.center,
           ),
         ),

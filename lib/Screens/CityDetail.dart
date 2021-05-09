@@ -37,7 +37,9 @@ class _CityDetailState extends State<CityDetail> {
         body: TabBarView(
           children: [
             Content(data: widget.data),
-            CityCommentsScreen(sehirData: widget.data,),
+            CityCommentsScreen(
+              sehirData: widget.data,
+            ),
             Foods(
               sehirData: widget.data,
             ),
@@ -110,7 +112,8 @@ class _ContentState extends State<Content> {
                       quarterTurns: 0,
                       child: Transform(
                         alignment: FractionalOffset.center,
-                        transform: Matrix4.diagonal3(Vector3(_scale, _scale, _scale)),
+                        transform:
+                            Matrix4.diagonal3(Vector3(_scale, _scale, _scale)),
                         child: ClipRRect(
                           child: Image.asset(
                             'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg',
@@ -171,44 +174,51 @@ class _ContentState extends State<Content> {
                       width: 5,
                     ),
                     FutureBuilder(
-                        future: _dbHelper.getFavoritesByCityId(widget.data.id),
-                        builder: (context, snapshot) {
-                          if (!snapshot.hasData)
-                            return Icon(Icons.warning_amber_outlined);
-                          if (snapshot.data.isEmpty)
-                            return CircleAvatar(
-                                backgroundColor: Theme.of(context).primaryColor,
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.favorite_border_rounded,
-                                    color: Colors.red,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _dbHelper.insertFavorite(
-                                          Favorite(cityId: widget.data.id));
-
-                                      ToastHelper().makeToastMessage(
-                                          'Favorilere eklendi.');
-                                    });
-                                  },
-                                ));
+                      future: _dbHelper.getFavoritesByCityId(widget.data.id),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData)
+                          return Icon(Icons.warning_amber_outlined);
+                        if (snapshot.data.isEmpty)
                           return CircleAvatar(
-                              backgroundColor: Theme.of(context).primaryColor,
-                              child: IconButton(
-                                icon: Icon(
-                                  Icons.favorite,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _dbHelper.removeFavorite(widget.data.id);
+                            backgroundColor: Theme.of(context).primaryColor,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.favorite_border_rounded,
+                                color: Colors.red,
+                              ),
+                              onPressed: () {
+                                setState(
+                                  () {
+                                    _dbHelper.insertFavorite(
+                                        Favorite(cityId: widget.data.id));
+
                                     ToastHelper().makeToastMessage(
-                                        'Favorilerden kaldırıldı.');
-                                  });
+                                        'Favorilere eklendi.');
+                                  },
+                                );
+                              },
+                            ),
+                          );
+                        return CircleAvatar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.red,
+                            ),
+                            onPressed: () {
+                              setState(
+                                () {
+                                  _dbHelper.removeFavorite(widget.data.id);
+                                  ToastHelper().makeToastMessage(
+                                      'Favorilerden kaldırıldı.');
                                 },
-                              ));
-                        })
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    )
                   ],
                 ),
               )
