@@ -12,3 +12,5 @@ const cityCommentsRoute = "/cityComments";
 const targetDetailRoute = "/targetDetail";
 const expensesRoute = "/expenses";
 const addExpensesRoute = "/addExpenses";
+const registerRoute = "/registerRoute";
+const profileRoute = "/profileRoute";

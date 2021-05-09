@@ -36,7 +36,7 @@ class _CityDetailState extends State<CityDetail> {
         body: TabBarView(
           children: [
             Content(data: widget.data),
-            CityCommentsScreen(),
+            CityCommentsScreen(sehirData: widget.data,),
             Foods(
               sehirData: widget.data,
             ),

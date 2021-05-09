@@ -7,6 +7,7 @@ import 'package:nereye_gitmeli_app/Components/SehirCard.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 import 'package:nereye_gitmeli_app/Classes/Sehir/Data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,6 +15,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  SharedPreferences prefs;
+  bool isLogged = false;
+
+  Future getPrefs() async {
+    prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      if (!prefs.containsKey('isLogged')) {
+        prefs.setBool('isLogged', false);
+        isLogged = prefs.getBool('isLogged');
+      } else {
+        isLogged = prefs.getBool('isLogged');
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getPrefs();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +45,28 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Nereye Gitmeli?'),
         leading: Icon(Icons.explore),
         actions: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: IconButton(
-              icon: Icon(
-                Icons.person,
-                size: 30,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, myRouteNames.loginRoute);
-              },
-            ),
-          ),
+          isLogged
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: IconButton(
+                    icon: Icon(Icons.person_search, size: 30),
+                    onPressed: (){
+                      Navigator.pushNamed(context, myRouteNames.profileRoute);
+                    },
+                  ),
+                )
+              : Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.person,
+                      size: 30,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, myRouteNames.loginRoute);
+                    },
+                  ),
+                )
         ],
       ),
       body: Content(),
@@ -165,8 +199,8 @@ class Content extends StatelessWidget {
                     children: sehirData.yurtici
                         .sortedBy((element) => element.adi)
                         .map((item) => SehirCard(
-                      sehirData: item,
-                    ))
+                              sehirData: item,
+                            ))
                         .toList(),
                   ),
                 ),
