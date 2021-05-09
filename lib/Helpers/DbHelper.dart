@@ -46,6 +46,11 @@ class DbHelper{
     return await dbClient.insert("Plan", plan.toMap());
   }
 
+  Future<void> removePlan(int id) async{
+    var dbClient = await db;
+    return await dbClient.delete("Plan", where: "id=?", whereArgs: [id]);
+  }
+
   Future<int> insertPlanDetail(PlanDetail planDetail) async{
     var dbClient = await db;
     return await dbClient.insert("PlanDetail", planDetail.toMap());

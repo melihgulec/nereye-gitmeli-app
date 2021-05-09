@@ -53,15 +53,51 @@ class _PlanScreenState extends State<PlanScreen> {
                 itemBuilder: (context, index){
                   Plan plan = snapshot.data[index];
                   return Card(
-                    child: ListTile(
-                      onTap: (){
-                        Navigator.pushNamed(context, myRouteNames.planDetailRoute, arguments: plan);
+                    child: Dismissible(
+                      onDismissed: (direction) {
+                        _dbHelper.removePlan(plan.id);
+                        ToastHelper().makeToastMessage(
+                            "${plan.planTitle} kaldırıldı.");
                       },
+                      background: Container(
+                        color: Colors.red,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Icon(
+                              Icons.cancel,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ),
+                      secondaryBackground: Container(
+                        color: Colors.red,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Icon(
+                              Icons.cancel,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                        ),
+                      ),
+                      key: ValueKey(plan.id),
+                      child: ListTile(
+                        onTap: (){
+                          Navigator.pushNamed(context, myRouteNames.planDetailRoute, arguments: plan);
+                        },
 
-                      leading: Icon(Icons.library_add_check_sharp),
-                      title: Text('${plan.planTitle}'),
-                      subtitle: Text('Detayları görüntüle'),
-                      trailing: Icon(Icons.chevron_right),
+                        leading: Icon(Icons.library_add_check_sharp),
+                        title: Text('${plan.planTitle}'),
+                        subtitle: Text('Detayları görüntüle'),
+                        trailing: Icon(Icons.chevron_right),
+                      ),
                     ),
                   );
                 },
