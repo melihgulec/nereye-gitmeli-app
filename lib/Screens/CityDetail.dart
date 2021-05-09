@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
@@ -58,6 +59,8 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   DbHelper _dbHelper;
+  double _scale = 1.0;
+  double _previousScale = 1.0;
 
   void _launchMapsUrl(String addr) async {
     print(addr.replaceAll(' ', '+'));
@@ -86,14 +89,39 @@ class _ContentState extends State<Content> {
                 height: 230,
                 child: Hero(
                   tag: 'city-img-${widget.data.id}',
-                  child: ClipRRect(
-                    child: Image.asset(
-                      'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg',
-                      fit: BoxFit.cover,
+                  child: GestureDetector(
+                    onScaleStart: (ScaleStartDetails details) {
+                      print(details);
+                      _previousScale = _scale;
+                      setState(() {});
+                    },
+                    onScaleUpdate: (ScaleUpdateDetails details) {
+                      print(details);
+                      _scale = _previousScale * details.scale;
+                      setState(() {});
+                    },
+                    onScaleEnd: (ScaleEndDetails details) {
+                      print(details);
+
+                      _previousScale = 1.0;
+                      setState(() {});
+                    },
+                    child: RotatedBox(
+                      quarterTurns: 0,
+                      child: Transform(
+                        alignment: FractionalOffset.center,
+                        transform: Matrix4.diagonal3(Vector3(_scale, _scale, _scale)),
+                        child: ClipRRect(
+                          child: Image.asset(
+                            'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg',
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15)),
+                        ),
+                      ),
                     ),
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
                   ),
                 ),
               ),

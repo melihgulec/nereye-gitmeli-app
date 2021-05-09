@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onChanged: (value){
                       pass = value;
                     },
-
+                    obscureText: true,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(

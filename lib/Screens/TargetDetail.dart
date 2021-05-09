@@ -51,9 +51,14 @@ class _TargetDetailState extends State<TargetDetail> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: IconButton(
-              icon: Icon(
-                Icons.delete_forever,
-                size: 30,
+              icon: GestureDetector(
+                onTapCancel: (){
+                  ToastHelper().makeToastMessage('Hedef silinmedi.');
+                },
+                child: Icon(
+                  Icons.delete_forever,
+                  size: 30,
+                ),
               ),
               onPressed: () {
                 _dbHelper.removeTarget(widget.hedef.id);
@@ -122,25 +127,34 @@ class _TargetDetailState extends State<TargetDetail> {
               ),
               Card(
                 color: Theme.of(context).primaryColor,
-                child: ListTile(
-                  onTap: () {
+                child: GestureDetector(
+                  onHorizontalDragUpdate: (DragUpdateDetails details){
                     Navigator.pushNamed(
-                      context,
-                      myRouteNames
-                          .cityDetailRoute, arguments: currentSehir
+                        context,
+                        myRouteNames
+                            .cityDetailRoute, arguments: currentSehir
                     );
                   },
-                  leading: Icon(
-                    Icons.location_city,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    'Hedeflediğin şehire git',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  trailing: Icon(
-                    Icons.chevron_right,
-                    color: Colors.white,
+                  child: ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        myRouteNames
+                            .cityDetailRoute, arguments: currentSehir
+                      );
+                    },
+                    leading: Icon(
+                      Icons.location_city,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      'Hedeflediğin şehire git',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    trailing: Icon(
+                      Icons.chevron_right,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

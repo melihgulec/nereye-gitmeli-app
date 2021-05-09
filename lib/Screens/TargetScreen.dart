@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class TargetScreen extends StatefulWidget {
   @override
@@ -51,6 +52,9 @@ class _TargetScreenState extends State<TargetScreen> {
                 Target target = snapshot.data[index];
                 return Card(
                   child: ListTile(
+                    onLongPress: (){
+                      ToastHelper().makeToastMessage('${target.targetDate} tarihinde oluşturuldu.');
+                    },
                     onTap: () {
                       Navigator.pushReplacementNamed(
                           context, myRouteNames.targetDetailRoute,
