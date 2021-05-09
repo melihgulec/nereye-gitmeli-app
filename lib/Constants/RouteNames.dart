@@ -14,3 +14,4 @@ const expensesRoute = "/expenses";
 const addExpensesRoute = "/addExpenses";
 const registerRoute = "/registerRoute";
 const profileRoute = "/profileRoute";
+const planDetailRoute = "/planDetailRoute";

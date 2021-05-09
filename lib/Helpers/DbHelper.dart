@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:nereye_gitmeli_app/Classes/User/Favorite.dart';
+import 'package:nereye_gitmeli_app/Classes/User/Plan.dart';
+import 'package:nereye_gitmeli_app/Classes/User/PlanDetail.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -23,6 +25,40 @@ class DbHelper{
   FutureOr<void> _onCreate(Database db, int version) async {
     await db.execute("CREATE TABLE Target(id INTEGER PRIMARY KEY NOT NULL, targetHead TEXT, targetDestination TEXT, targetDestinationCityId INTEGER, targetDescription TEXT, targetDate TEXT)");
     await db.execute("CREATE TABLE Favorites(id INTEGER PRIMARY KEY NOT NULL, cityId INTEGER)");
+    await db.execute("CREATE TABLE Plan(id INTEGER PRIMARY KEY NOT NULL, planTitle TEXT)");
+    await db.execute("CREATE TABLE PlanDetail(id INTEGER PRIMARY KEY NOT NULL, planId INTEGER, description TEXT, status INTEGER)");
+  }
+
+  Future<List<Plan>> getPlan() async{
+    var dbClient = await db;
+    var result = await dbClient.query("Plan", orderBy: "id");
+    return result.map((data) => Plan.fromMap(data)).toList();
+  }
+
+  Future<List<PlanDetail>> getPlanDetail(int planId) async{
+    var dbClient = await db;
+    var result = await dbClient.query("PlanDetail", where: "planId=?", whereArgs: [planId]);
+    return result.map((data) => PlanDetail.fromMap(data)).toList();
+  }
+
+  Future<int> insertPlan(Plan plan) async{
+    var dbClient = await db;
+    return await dbClient.insert("Plan", plan.toMap());
+  }
+
+  Future<int> insertPlanDetail(PlanDetail planDetail) async{
+    var dbClient = await db;
+    return await dbClient.insert("PlanDetail", planDetail.toMap());
+  }
+
+  Future<int> updatePlanDetail(PlanDetail planDetail) async{
+    var dbClient = await db;
+    return await dbClient.update("PlanDetail", planDetail.toMap(), where: "id=?", whereArgs: [planDetail.id]);
+  }
+
+  Future<void> removePlanDetail(int id) async{
+    var dbClient = await db;
+    return await dbClient.delete("PlanDetail", where: "id=?", whereArgs: [id]);
   }
 
   Future<List<Target>> getTargets() async{

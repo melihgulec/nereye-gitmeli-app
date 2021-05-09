@@ -15,6 +15,7 @@ import 'package:nereye_gitmeli_app/Screens/TargetDetail.dart';
 import 'package:nereye_gitmeli_app/Screens/ExpensesScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/RegisterScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/ProfileScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/PlanDetailScreen.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart';
 
@@ -37,6 +38,7 @@ class Router{
       case expensesRoute: return MaterialPageRoute(builder: (context) => ExpensesScreen());
       case registerRoute: return MaterialPageRoute(builder: (context) => RegisterScreen());
       case profileRoute: return MaterialPageRoute(builder: (context) => ProfileScreen());
+      case planDetailRoute: return MaterialPageRoute(builder: (context) => PlanDetailScreen(plan: settings.arguments,));
       default:
         return MaterialPageRoute(builder: (context) => NotFoundScreen());
     }

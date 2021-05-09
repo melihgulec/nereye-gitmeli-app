@@ -1,7 +1,17 @@
 class Plan {
+  int id;
   String planTitle;
-  String planDescription;
-  bool planStatus;
 
-  Plan({this.planTitle, this.planDescription, this.planStatus});
+  Plan({this.planTitle});
+
+  Map<String, dynamic> toMap(){ // veri eklemek için.
+    var map = Map<String, dynamic>();
+    map['planTitle'] = planTitle;
+    return map;
+  }
+
+  Plan.fromMap(Map<String, dynamic> map){
+    id = map['id'];
+    planTitle = map["planTitle"];
+  }
 }

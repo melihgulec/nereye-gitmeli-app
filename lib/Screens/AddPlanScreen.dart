@@ -4,6 +4,7 @@ import 'package:nereye_gitmeli_app/Classes/User/Plan.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
+import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class AddPlanScreen extends StatefulWidget {
@@ -12,9 +13,16 @@ class AddPlanScreen extends StatefulWidget {
 }
 
 class _AddPlanScreenState extends State<AddPlanScreen> {
-  final userData = UserData.instance;
+  DbHelper _dbHelper;
   String planTitleValue = "";
   String planDescriptionValue = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _dbHelper = DbHelper();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,37 +73,6 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text('Plan Açıklaması:'),
-                            flex: 1,
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  hintText: '...',
-                                  hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 12),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white),
-                                  ),
-                                ),
-                                maxLines: null,
-                                style: TextStyle(color: Colors.white),
-                                onChanged: (value) {
-                                  setState(() {
-                                    planDescriptionValue = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            flex: 2,
-                          ),
-                        ],
-                      ),
                       ElevatedButton(
                         child: Text('Kaydet'),
                         style: ElevatedButton.styleFrom(
@@ -106,25 +83,17 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                           ),
                         ),
                         onPressed: () {
-
                           if(planTitleValue.trim() == "" && planDescriptionValue.trim() == ""){
                             ToastHelper().makeToastMessage('Lütfen plan başlığını ve açıklamasını doldurunuz.');
                           }else if(planTitleValue.trim() == ""){
                             ToastHelper().makeToastMessage('Lütfen plan başlığını doldurunuz.');
-                          }else if(planDescriptionValue.trim() == ""){
-                            ToastHelper().makeToastMessage('Lütfen plan açıklamasını doldurunuz.');
                           }else{
-                            userData.planList.add(
-                                Plan(
-                                  planTitle: planTitleValue,
-                                  planDescription: planDescriptionValue,
-                                  planStatus: false,
-                                )
+                            _dbHelper.insertPlan(
+                              Plan(
+                                planTitle: planTitleValue
+                              )
                             );
-
-                            Navigator.pushReplacementNamed(
-                                context, myRouteNames.planRoute,
-                                arguments: userData);
+                            Navigator.pushReplacementNamed(context, myRouteNames.planRoute);
                           }
                         },
                       )
