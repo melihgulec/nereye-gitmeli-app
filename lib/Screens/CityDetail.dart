@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nereye_gitmeli_app/Classes/Weather/Weather.dart';
+import 'package:nereye_gitmeli_app/Services/WeatherAPIService.dart';
 import 'package:vector_math/vector_math_64.dart' show Vector3;
 
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
@@ -63,6 +66,7 @@ class _ContentState extends State<Content> {
   DbHelper _dbHelper;
   double _scale = 1.0;
   double _previousScale = 1.0;
+  Future<Weather> havaDurumu;
 
   void _launchMapsUrl(String addr) async {
     print(addr.replaceAll(' ', '+'));
@@ -76,6 +80,7 @@ class _ContentState extends State<Content> {
     // TODO: implement initState
     super.initState();
     _dbHelper = DbHelper();
+    havaDurumu = getWeather(widget.data.adi);
   }
 
   @override
@@ -126,6 +131,31 @@ class _ContentState extends State<Content> {
                       ),
                     ),
                   ),
+                ),
+              ),
+              Positioned(
+                right: 0,
+                child: FutureBuilder(
+                  future: havaDurumu,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Colors.indigo,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(5), bottomLeft: Radius.circular(5)),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Hava: ${snapshot.data.description.toString()}\n${snapshot.data.temp} °C',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
+                        ),
+                      );
+                    }
+                    return Text('');
+                  },
                 ),
               ),
               Positioned(

@@ -363,7 +363,7 @@ class _WavingHandEmojiWidgetState extends State<WavingHandEmojiWidget> with Sing
     return SlideTransition(
       position: _animation,
       child: Text(
-        '✋',
+        '👋',
         style: TextStyle(fontSize: 50),
       ),
     );
