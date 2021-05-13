@@ -15,7 +15,7 @@ class PlanDetailScreen extends StatefulWidget {
 
 class _PlanDetailScreenState extends State<PlanDetailScreen> {
   DbHelper _dbHelper;
-  TextEditingController _controller;
+  final _aciklamaController = TextEditingController();
   String descVal;
   int planStatus = 0;
 
@@ -107,7 +107,7 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
                       borderSide: BorderSide(color: Colors.white),
                     ),
                   ),
-                  controller: _controller,
+                  controller: _aciklamaController,
                   onChanged: (value) {
                     descVal = value;
                   },
@@ -125,7 +125,7 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
                       status: 0,
                     ));
                   });
-                  _controller.clear();
+                  _aciklamaController.clear();
                 },
                 child: Text('Yeni Eleman Ekle'),
                 style: ElevatedButton.styleFrom(

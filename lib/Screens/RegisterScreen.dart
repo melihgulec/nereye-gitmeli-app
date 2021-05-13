@@ -30,7 +30,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     getPrefs();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

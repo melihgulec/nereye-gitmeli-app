@@ -13,6 +13,8 @@ import 'package:nereye_gitmeli_app/Screens/PlacesDetail.dart';
 import 'package:nereye_gitmeli_app/Screens/CityCommentsScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/TargetDetail.dart';
 import 'package:nereye_gitmeli_app/Screens/ExpensesScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/AddExpenseScreen.dart';
+import 'package:nereye_gitmeli_app/Screens/ExpenseDetailScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/RegisterScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/ProfileScreen.dart';
 import 'package:nereye_gitmeli_app/Screens/PlanDetailScreen.dart';
@@ -39,6 +41,8 @@ class Router{
       case registerRoute: return MaterialPageRoute(builder: (context) => RegisterScreen());
       case profileRoute: return MaterialPageRoute(builder: (context) => ProfileScreen());
       case planDetailRoute: return MaterialPageRoute(builder: (context) => PlanDetailScreen(plan: settings.arguments,));
+      case addExpenseRoute: return MaterialPageRoute(builder: (context) => AddExpenseScreen());
+      case expenseDetailRoute: return MaterialPageRoute(builder: (context) => ExpenseDetailScreen(expense: settings.arguments,));
       default:
         return MaterialPageRoute(builder: (context) => NotFoundScreen());
     }

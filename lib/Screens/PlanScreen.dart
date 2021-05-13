@@ -55,6 +55,7 @@ class _PlanScreenState extends State<PlanScreen> {
                   return Card(
                     child: Dismissible(
                       onDismissed: (direction) {
+                        _dbHelper.removePlanDetailByPlanId(plan.id);
                         _dbHelper.removePlan(plan.id);
                         ToastHelper().makeToastMessage(
                             "${plan.planTitle} kaldırıldı.");
