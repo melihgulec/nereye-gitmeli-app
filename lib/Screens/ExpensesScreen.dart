@@ -47,161 +47,136 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                   ),
                 );
 
-              return ListView.builder(
+              return ListView.separated(
+                separatorBuilder: (context, index){
+                  return Divider();
+                },
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
                   Expenses expense = snapshot.data[index];
+                  return Dismissible(
+                    onDismissed: (direction) {
+                      print(direction);
+                      setState(() {
+                        _dbHelper.removeExpense(expense.id);
+                        _dbHelper.removeExpensesDetailByExpenseId(expense.id);
+                      });
+                      ToastHelper()
+                          .makeToastMessage("${expense.expenseTitle} kaldırıldı.");
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(
+                            Icons.cancel,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    secondaryBackground: Container(
+                      color: Colors.red,
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(
+                            Icons.cancel,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    key: UniqueKey(),
+                    child: InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
+                        Navigator.pushNamed(context, myRouteNames.expenseDetailRoute,
+                            arguments: expense);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '${expense.id} - ${expense.expenseTitle}',
+                                style: TextStyle(color: Colors.red, fontSize: 18),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Divider(
+                                height: 15,
+                                color: Colors.grey,
+                                thickness: 1,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(Icons.date_range),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          '${expense.expenseDate}',
+                                          style: TextStyle(color: Colors.red),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.account_balance_wallet),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
+                                        FutureBuilder(
+                                          future: _dbHelper.getTotalById('ExpensesDetail', 'expenseMoney', expense.id, 'expenseId'),
+                                          builder: (context, snapshot) {
+                                            if (!snapshot.hasData)
+                                              return Text(
+                                                '0',
+                                                style: TextStyle(color: Colors.red),
+                                              );
 
-                  return ExpenseWidget(
-                    expense: expense,
-                    id: expense.id,
-                    expenseTitle: expense.expenseTitle,
-                    expenseDate: expense.expenseDate,
+                                            return Text(
+                                              '${snapshot.data}',
+                                              style: TextStyle(color: Colors.red),
+                                            );
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   );
                 },
               );
             },
           )),
-    );
-  }
-}
-
-class ExpenseWidget extends StatefulWidget {
-  final Expenses expense;
-  final int id;
-  final String expenseTitle;
-  final String expenseDate;
-
-  ExpenseWidget({this.id, this.expenseTitle, this.expenseDate, this.expense});
-
-  @override
-  _ExpenseWidgetState createState() => _ExpenseWidgetState();
-}
-
-class _ExpenseWidgetState extends State<ExpenseWidget> {
-  DbHelper _dbHelper;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _dbHelper = DbHelper();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Dismissible(
-        onDismissed: (direction) {
-          _dbHelper.removeExpensesDetailByExpenseId(widget.expense.id);
-          _dbHelper.removeExpense(widget.expense.id);
-          ToastHelper()
-              .makeToastMessage("${widget.expense.expenseTitle} kaldırıldı.");
-        },
-        background: Container(
-          color: Colors.red,
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Icon(
-                Icons.cancel,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-          ),
-        ),
-        secondaryBackground: Container(
-          color: Colors.red,
-          child: Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Icon(
-                Icons.cancel,
-                color: Colors.white,
-                size: 30,
-              ),
-            ),
-          ),
-        ),
-        key: ValueKey(widget.expense.id),
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
-            Navigator.pushNamed(context, myRouteNames.expenseDetailRoute,
-                arguments: widget.expense);
-          },
-          child: Container(
-            child: Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    '${widget.id} - ${widget.expenseTitle}',
-                    style: TextStyle(color: Colors.red, fontSize: 18),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Divider(
-                    height: 15,
-                    color: Colors.grey,
-                    thickness: 1,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.date_range),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            Text(
-                              '${widget.expenseDate}',
-                              style: TextStyle(color: Colors.red),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.account_balance_wallet),
-                            SizedBox(
-                              width: 15,
-                            ),
-                            FutureBuilder(
-                              future: _dbHelper.getTotalById('ExpensesDetail', 'expenseMoney', widget.id, 'expenseId'),
-                              builder: (context, snapshot) {
-                                if (!snapshot.hasData)
-                                  return Text(
-                                    '0',
-                                    style: TextStyle(color: Colors.red),
-                                  );
-
-                                return Text(
-                                  '${snapshot.data}',
-                                  style: TextStyle(color: Colors.red),
-                                );
-                              },
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
