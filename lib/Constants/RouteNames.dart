@@ -17,3 +17,4 @@ const profileRoute = "/profileRoute";
 const planDetailRoute = "/planDetailRoute";
 const addExpenseRoute = "/addExpenseRoute";
 const expenseDetailRoute = "/expenseDetailRoute";
+const weatherScreen = "/weatherScreen";
