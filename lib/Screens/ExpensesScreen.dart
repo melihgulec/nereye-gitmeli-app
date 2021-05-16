@@ -67,10 +67,10 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
 }
 
 class ExpenseWidget extends StatefulWidget {
-  Expenses expense;
-  int id;
-  String expenseTitle;
-  String expenseDate;
+  final Expenses expense;
+  final int id;
+  final String expenseTitle;
+  final String expenseDate;
 
   ExpenseWidget({this.id, this.expenseTitle, this.expenseDate, this.expense});
 
@@ -148,6 +148,8 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                   ),
                   Divider(
                     height: 15,
+                    color: Colors.grey,
+                    thickness: 1,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),

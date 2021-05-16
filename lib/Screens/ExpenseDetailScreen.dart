@@ -6,7 +6,7 @@ import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class ExpenseDetailScreen extends StatefulWidget {
-  Expenses expense;
+  final Expenses expense;
 
   ExpenseDetailScreen({this.expense});
 

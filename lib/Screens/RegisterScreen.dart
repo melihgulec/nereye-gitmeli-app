@@ -177,7 +177,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }else if(pass.trim() != passValidation.trim()){
                           ToastHelper().makeToastMessage('Şifreler uyuşmuyor. Lütfen tekrar deneyin.');
                         }else if(pass.trim() == passValidation.trim()){
-                          var kayitDurumu = _authService.createUser(name, eMail, pass).then((value){
+                          _authService.createUser(name, eMail, pass).then((value){
                             if(value != null){
                               Navigator.pushNamed(context, myRouteNames.homeRoute);
                             }else{

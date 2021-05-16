@@ -3,9 +3,9 @@ import 'package:nereye_gitmeli_app/Components/NavigatorListTile.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 class FavoritesButton extends StatelessWidget {
-  Color backgroundColor;
-  Color textColor;
-  Color iconColor;
+  final Color backgroundColor;
+  final Color textColor;
+  final Color iconColor;
   FavoritesButton({this.backgroundColor, this.textColor, this.iconColor});
 
   @override

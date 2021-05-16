@@ -5,7 +5,7 @@ import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 
 class PlanDetailScreen extends StatefulWidget {
-  Plan plan;
+  final Plan plan;
 
   PlanDetailScreen({this.plan});
 

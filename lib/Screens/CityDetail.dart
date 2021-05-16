@@ -207,7 +207,10 @@ class _ContentState extends State<Content> {
                       future: _dbHelper.getFavoritesByCityId(widget.data.id),
                       builder: (context, snapshot) {
                         if (!snapshot.hasData)
-                          return Icon(Icons.warning_amber_outlined);
+                          return CircleAvatar(
+                            backgroundColor: Theme.of(context).primaryColor,
+                            child: Icon(Icons.warning_amber_outlined, color: Colors.red,),
+                          );
                         if (snapshot.data.isEmpty)
                           return CircleAvatar(
                             backgroundColor: Theme.of(context).primaryColor,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 
 class Foods extends StatefulWidget {
-  Sehir sehirData;
+  final Sehir sehirData;
 
   Foods({this.sehirData});
 
@@ -27,8 +27,8 @@ class _FoodsState extends State<Foods> {
 }
 
 class FoodCard extends StatelessWidget {
-  var yemekData;
-  Sehir sehir;
+  final yemekData;
+  final Sehir sehir;
 
   FoodCard({this.yemekData, this.sehir});
 

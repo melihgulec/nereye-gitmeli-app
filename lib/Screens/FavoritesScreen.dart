@@ -72,7 +72,6 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   Sehir currentSehir;
 
   Sehir findCityById(int cityId) {
-    bool control = false;
     int index = sehirData.yurtici.indexWhere((element) => element.id == cityId);
     if(index == -1){
       index = sehirData.yurtdisi.indexWhere((element) => element.id == cityId);

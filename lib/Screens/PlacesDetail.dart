@@ -8,8 +8,8 @@ import 'package:nereye_gitmeli_app/Components/PlacesCard.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PlacesDetail extends StatefulWidget {
-  Places yerData;
-  Sehir sehirData;
+  final Places yerData;
+  final Sehir sehirData;
 
   PlacesDetail({this.yerData, this.sehirData});
 

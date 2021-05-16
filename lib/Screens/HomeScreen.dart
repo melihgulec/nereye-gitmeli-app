@@ -9,7 +9,6 @@ import 'package:nereye_gitmeli_app/Components/FavoritesButton.dart';
 import 'package:nereye_gitmeli_app/Components/TargetButton.dart';
 import 'package:nereye_gitmeli_app/Components/ExpensesButton.dart';
 import 'package:nereye_gitmeli_app/Components/PlanButton.dart';
-import 'package:nereye_gitmeli_app/Components/NavigatorListTile.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

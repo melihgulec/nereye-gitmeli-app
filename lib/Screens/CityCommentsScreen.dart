@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Components/CommentWidget.dart';
-import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nereye_gitmeli_app/Constants/Colors.dart';
 
 class CityCommentsScreen extends StatefulWidget {
-  Sehir sehirData;
+  final Sehir sehirData;
 
   CityCommentsScreen({this.sehirData});
 
@@ -16,9 +16,9 @@ class CityCommentsScreen extends StatefulWidget {
 }
 
 class _CityCommentsScreenState extends State<CityCommentsScreen> {
+  FirebaseFirestore firestore;
   CollectionReference commentsCollection =
       FirebaseFirestore.instance.collection('Comments');
-  final GlobalKey<AnimatedListState> _key = GlobalKey();
   SharedPreferences prefs;
   bool isLogged = false;
   String textVal = "";
@@ -47,29 +47,42 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
       'cityid': widget.sehirData.id,
       'comment': textVal,
       'name': userName,
-      'type': 1
+      'type': 1,
+      'tarih': FieldValue.serverTimestamp()
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Container(
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
               width: double.infinity,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                  color: secondColor,
+                  borderRadius: BorderRadius.circular(8)
+              ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(11.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       flex: 1,
                       child: CircleAvatar(
-                        child: Icon(Icons.person),
+                        child: Image(
+                          image: NetworkImage('https://ui-avatars.com/api/?name=${userName.replaceAll(' ', '+')}&size=256&bold=true&rounded=true'),
+                          errorBuilder: (context, object, stackTrace){
+                            return Icon(Icons.person);
+                          },
+                          loadingBuilder: (context, child, loadingProgress){
+                            if(loadingProgress == null) return child;
+                            return CircularProgressIndicator();
+                          },
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -90,6 +103,8 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                               maxLines: null,
                               enabled: isLogged,
                               decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green),
                                 ),
@@ -100,6 +115,9 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                           Container(
                             width: double.infinity,
                             child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Theme.of(context).primaryColor,
+                              ),
                               child: Text('Yorumu gönder'),
                               onPressed:
                                   isLogged ? () => addComment('comment') : null,
@@ -112,41 +130,46 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            StreamBuilder<QuerySnapshot>(
-              stream: FirebaseFirestore.instance
-                  .collection('Comments')
-                  .where('cityid', isEqualTo: widget.sehirData.id)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  List<DocumentSnapshot> items = snapshot.data.docs;
-                  return Flexible(
-                    child: ListView.builder(
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            CommentWidget(
-                                userName: items[index].data()['name'],
-                                comment: items[index].data()['comment']),
-                            SizedBox(
-                              height: 15,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  );
-                } else {
-                  return CircularProgressIndicator();
-                }
-              },
-            )
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance
+                .collection('Comments')
+                .where('cityid', isEqualTo: widget.sehirData.id)
+                .orderBy('tarih', descending: true)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<DocumentSnapshot> items = snapshot.data.docs;
+                return Flexible(
+                  child: ListView.separated(
+                    separatorBuilder: (context, index){
+                      return Divider(color: Colors.grey,);
+                    },
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      Timestamp timestamp = items[index].data()['tarih'];
+                      var timeToNormal = DateTime.fromMicrosecondsSinceEpoch(timestamp == null ? DateTime.now().microsecondsSinceEpoch : timestamp.microsecondsSinceEpoch);
+                      return Column(
+                        children: [
+                          CommentWidget(
+                              userName: items[index].data()['name'],
+                              comment: items[index].data()['comment'],
+                              time: timeToNormal,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                );
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
+          )
+        ],
       ),
     );
   }

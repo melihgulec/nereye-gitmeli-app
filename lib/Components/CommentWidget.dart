@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class CommentWidget extends StatelessWidget {
   final String userName;
   final String comment;
+  final DateTime time;
 
   CommentWidget({
     Key key,
     @required this.userName,
     @required this.comment,
+    @required this.time,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green,
+      //color: secondColor,
       width: double.infinity,
       child: Padding(
         padding: EdgeInsets.all(8.0),
@@ -23,7 +26,16 @@ class CommentWidget extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CircleAvatar(
-                child: Icon(Icons.person),
+                child: Image(
+                  image: NetworkImage('https://ui-avatars.com/api/?name=${userName.replaceAll(' ', '+')}&size=256&bold=true&rounded=true'),
+                  errorBuilder: (context, object, stackTrace){
+                    return Icon(Icons.person);
+                  },
+                  loadingBuilder: (context, child, loadingProgress){
+                    if(loadingProgress == null) return child;
+                    return CircularProgressIndicator();
+                  },
+                ),
               ),
             ),
             Expanded(
@@ -46,6 +58,14 @@ class CommentWidget extends StatelessWidget {
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
+                  SizedBox(height: 5,),
+                  Container(
+                    width: double.infinity,
+                    child: Text(
+                      '${DateFormat('dd.mm.yyyy hh:mm').format(time)}',
+                      style: TextStyle(fontSize: 13),
+                    ),
+                  ),
                 ],
               ),
             )
@@ -53,6 +73,5 @@ class CommentWidget extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

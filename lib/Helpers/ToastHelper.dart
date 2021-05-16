@@ -27,8 +27,8 @@ class ToastHelper{
 
   void makeToastMessage(String message, {var gravity, Color backgroundColor, Color textColor, double fontSize}) {
     Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
+      msg: message == null ? this._message : message,
+      toastLength: this._toastLength,
       gravity: gravity == null ? this._gravity : gravity,
       timeInSecForIosWeb: 1,
       backgroundColor: backgroundColor == null ? this._backgroundColor : backgroundColor,

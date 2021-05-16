@@ -101,11 +101,9 @@ class _TargetScreenState extends State<TargetScreen> {
                             arguments: target);
                       },
                       tileColor: Colors.white,
-                      trailing: IconButton(
-                        icon: Icon(
-                          Icons.chevron_right,
-                          color: Colors.black,
-                        ),
+                      trailing: Icon(
+                        Icons.chevron_right,
+                        color: Colors.black,
                       ),
                       leading: Icon(
                         Icons.assignment_rounded,

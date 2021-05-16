@@ -3,9 +3,9 @@ import 'package:nereye_gitmeli_app/Components/NavigatorListTile.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 
 class ExpensesButton extends StatelessWidget {
-  Color backgroundColor;
-  Color textColor;
-  Color iconColor;
+  final Color backgroundColor;
+  final Color textColor;
+  final Color iconColor;
   ExpensesButton({this.backgroundColor, this.textColor, this.iconColor});
 
   @override

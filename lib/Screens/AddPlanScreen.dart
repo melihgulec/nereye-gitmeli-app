@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nereye_gitmeli_app/Classes/User/UserData.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Plan.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 

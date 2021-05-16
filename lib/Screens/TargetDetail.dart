@@ -8,7 +8,7 @@ import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class TargetDetail extends StatefulWidget {
-  Target hedef;
+  final Target hedef;
 
   TargetDetail({this.hedef});
 
@@ -22,7 +22,6 @@ class _TargetDetailState extends State<TargetDetail> {
   DbHelper _dbHelper;
 
   Sehir findCityById(int cityId) {
-    bool control = false;
     int index = sehirData.yurtici.indexWhere((element) => element.id == cityId);
     if(index == -1){
       index = sehirData.yurtdisi.indexWhere((element) => element.id == cityId);
@@ -50,21 +49,19 @@ class _TargetDetailState extends State<TargetDetail> {
         actions: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 5),
-            child: IconButton(
-              icon: GestureDetector(
-                onTap: (){
-                  _dbHelper.removeTarget(widget.hedef.id);
-                  ToastHelper().makeToastMessage("${widget.hedef.targetHead} hedeflerinden kaldırıldı.");
-                  Navigator.pushReplacementNamed(context, myRouteNames.targetRoute);
-                },
-                onTapCancel: (){
-                  ToastHelper().makeToastMessage('Hedef silinmedi.');
-                },
-                child: Icon(
-                  Icons.delete_forever,
-                  size: 30,
-                  color: Colors.white,
-                ),
+            child: GestureDetector(
+              onTap: (){
+                _dbHelper.removeTarget(widget.hedef.id);
+                ToastHelper().makeToastMessage("${widget.hedef.targetHead} hedeflerinden kaldırıldı.");
+                Navigator.pushReplacementNamed(context, myRouteNames.targetRoute);
+              },
+              onTapCancel: (){
+                ToastHelper().makeToastMessage('Hedef silinmedi.');
+              },
+              child: Icon(
+                Icons.delete_forever,
+                size: 30,
+                color: Colors.white,
               ),
             ),
           ),

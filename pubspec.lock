@@ -51,7 +51,7 @@ packages:
     source: hosted
     version: "4.0.3"
   cloud_firestore_web:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: cloud_firestore_web
       url: "https://pub.dartlang.org"

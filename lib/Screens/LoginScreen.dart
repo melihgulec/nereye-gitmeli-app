@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nereye_gitmeli_app/Constants/Colors.dart';
-import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'package:nereye_gitmeli_app/Services/AuthService.dart';
 import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:shared_preferences/shared_preferences.dart';

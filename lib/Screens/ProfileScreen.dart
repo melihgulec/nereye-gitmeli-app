@@ -68,6 +68,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   fit: BoxFit.cover,
                                   image: NetworkImage(
                                       'https://ui-avatars.com/api/?name=${items[0].data()['name']}&size=256&bold=true'),
+                                  errorBuilder: (context, object, stackTrace){
+                                    return Icon(Icons.person, size:75);
+                                  },
+                                  loadingBuilder: (context, child, loadingProgress){
+                                    if(loadingProgress == null) return child;
+                                    return CircularProgressIndicator();
+                                  },
                                 ),
                               ),
                             ),

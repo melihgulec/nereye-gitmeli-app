@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class NavigatorListTile extends StatelessWidget {
-  String routeName;
-  String title;
-  Icon icon;
-  Color backgroundColor;
-  Color textColor;
+  final String routeName;
+  final String title;
+  final Icon icon;
+  final Color backgroundColor;
+  final Color textColor;
 
   NavigatorListTile({
     Key key,
