@@ -91,15 +91,8 @@ class _TargetScreenState extends State<TargetScreen> {
                     ),
                     key: ValueKey(target.id),
                     child: ListTile(
-                      onLongPress: () {
-                        ToastHelper().makeToastMessage(
-                            '${target.targetDate} tarihinde oluşturuldu.');
-                      },
-                      onTap: () {
-                        Navigator.pushReplacementNamed(
-                            context, myRouteNames.targetDetailRoute,
-                            arguments: target);
-                      },
+                      title: Text('${target.id} - ${target.targetHead}'),
+                      subtitle: Text('Detayları görüntüle'),
                       tileColor: Colors.white,
                       trailing: Icon(
                         Icons.chevron_right,
@@ -109,7 +102,15 @@ class _TargetScreenState extends State<TargetScreen> {
                         Icons.assignment_rounded,
                         color: Theme.of(context).primaryColor,
                       ),
-                      title: Text('${target.id} - ${target.targetHead}'),
+                      onLongPress: () {
+                        ToastHelper().makeToastMessage(
+                            '${target.targetDate} tarihinde oluşturuldu.');
+                      },
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                            context, myRouteNames.targetDetailRoute,
+                            arguments: target);
+                      },
                     ),
                   ),
                 );
