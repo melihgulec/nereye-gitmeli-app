@@ -74,7 +74,7 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                       flex: 1,
                       child: CircleAvatar(
                         child: Image(
-                          image: NetworkImage('https://ui-avatars.com/api/?name=${userName.replaceAll(' ', '+')}&size=256&bold=true&rounded=true'),
+                          image: NetworkImage('https://ui-avatars.com/api/?name=${userName == null ? 'x' : userName.replaceAll(' ', '+')}&size=256&bold=true&rounded=true'),
                           errorBuilder: (context, object, stackTrace){
                             return Icon(Icons.person);
                           },

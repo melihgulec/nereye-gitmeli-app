@@ -57,7 +57,7 @@ class _TargetScreenState extends State<TargetScreen> {
                 return Card(
                   child: Dismissible(
                     onDismissed: (direction) {
-                      _dbHelper.removeTarget(target.id);
+                      _dbHelper.removeItem(_dbHelper.targetTableName, 'id', target.id);
                       ToastHelper().makeToastMessage(
                           "${target.targetHead} hedeflerinden kaldırıldı.");
                     },

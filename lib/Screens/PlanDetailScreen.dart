@@ -61,35 +61,38 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
                           widget: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: CheckboxListTile(
-                              controlAffinity: ListTileControlAffinity.leading,
-                              activeColor: Theme.of(context).primaryColor,
-                              checkColor: Colors.black,
-                              value: planDetail.status == 1 ? true : false,
-                              title: Text(
-                                '${planDetail.description}',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  planDetail.status == 1
-                                      ? planDetail.status = 0
-                                      : planDetail.status = 1;
-                                  _dbHelper.updatePlanDetail(planDetail);
-                                });
-                              },
-                              secondary: IconButton(
-                                icon: Icon(
-                                  Icons.delete_forever,
-                                  size: 35,
-                                  color: Colors.red,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
+                                activeColor: Theme.of(context).primaryColor,
+                                checkColor: Colors.black,
+                                value: planDetail.status == 1 ? true : false,
+                                title: Text(
+                                  '${planDetail.description}',
+                                  style: TextStyle(color: Colors.white),
                                 ),
-                                onPressed: (){
+                                onChanged: (value) {
                                   setState(() {
-                                    _dbHelper.removePlanDetail(planDetail.id);
+                                    planDetail.status == 1
+                                        ? planDetail.status = 0
+                                        : planDetail.status = 1;
+                                    _dbHelper.updateItem(planDetail, _dbHelper.planDetailTableName,'id');
                                   });
                                 },
-                              )
-                            ),
+                                secondary: IconButton(
+                                  icon: Icon(
+                                    Icons.delete_forever,
+                                    size: 35,
+                                    color: Colors.red,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _dbHelper.removeItem(
+                                          _dbHelper.planDetailTableName,
+                                          'id',
+                                          planDetail.id);
+                                    });
+                                  },
+                                )),
                           ),
                         );
                       },
@@ -118,13 +121,18 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    _dbHelper.insertPlanDetail(PlanDetail(
-                      description: descVal,
-                      planId: widget.plan.id,
-                      status: 0,
-                    ));
-                  });
+                  setState(
+                    () {
+                      _dbHelper.insertItem(
+                        PlanDetail(
+                          description: descVal,
+                          planId: widget.plan.id,
+                          status: 0,
+                        ),
+                        _dbHelper.planDetailTableName
+                      );
+                    },
+                  );
                   _aciklamaController.clear();
                 },
                 child: Text('Yeni Eleman Ekle'),

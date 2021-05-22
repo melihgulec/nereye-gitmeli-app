@@ -11,6 +11,20 @@ import 'package:sqflite/sqflite.dart';
 class DbHelper{
   static Database _db;
 
+  String _targetTableName = 'Target';
+  String _favoritesTableName = 'Favorites';
+  String _planTableName = 'Plan';
+  String _planDetailTableName = 'PlanDetail';
+  String _expensesTableName = 'Expenses';
+  String _expensesDetailTableName = 'ExpensesDetail';
+
+  String get targetTableName => _targetTableName;
+  String get favoritesTableName => _favoritesTableName;
+  String get planTableName => _planTableName;
+  String get planDetailTableName => _planDetailTableName;
+  String get expensesTableName => _expensesTableName;
+  String get expensesDetailTableName => _expensesDetailTableName;
+
   Future<Database> get db async{
     if(_db != null) return _db;
     _db = await initDb();
@@ -20,118 +34,58 @@ class DbHelper{
   initDb() async {
     var dbFolder = await getDatabasesPath();
     String path = join(dbFolder, "NereyeGitmeli.db");
-    
+
     return await openDatabase(path, onCreate: _onCreate, version:1);
   }
   
   FutureOr<void> _onCreate(Database db, int version) async {
-    await db.execute("CREATE TABLE Target(id INTEGER PRIMARY KEY NOT NULL, targetHead TEXT, targetDestination TEXT, targetDestinationCityId INTEGER, targetDescription TEXT, targetDate TEXT)");
-    await db.execute("CREATE TABLE Favorites(id INTEGER PRIMARY KEY NOT NULL, cityId INTEGER)");
-    await db.execute("CREATE TABLE Plan(id INTEGER PRIMARY KEY NOT NULL, planTitle TEXT)");
-    await db.execute("CREATE TABLE PlanDetail(id INTEGER PRIMARY KEY NOT NULL, planId INTEGER, description TEXT, status INTEGER)");
-    await db.execute("CREATE TABLE Expenses(id INTEGER PRIMARY KEY NOT NULL, expenseTitle TEXT, expenseDate TEXT)");
-    await db.execute("CREATE TABLE ExpensesDetail(id INTEGER PRIMARY KEY NOT NULL, expenseId INTEGER, expenseDescription TEXT, expenseMoney INTEGER)");
+    await db.execute("CREATE TABLE $_targetTableName(id INTEGER PRIMARY KEY NOT NULL, targetHead TEXT, targetDestination TEXT, targetDestinationCityId INTEGER, targetDescription TEXT, targetDate TEXT)");
+    await db.execute("CREATE TABLE $_favoritesTableName(id INTEGER PRIMARY KEY NOT NULL, cityId INTEGER)");
+    await db.execute("CREATE TABLE $_planTableName(id INTEGER PRIMARY KEY NOT NULL, planTitle TEXT)");
+    await db.execute("CREATE TABLE $_planDetailTableName(id INTEGER PRIMARY KEY NOT NULL, planId INTEGER, description TEXT, status INTEGER)");
+    await db.execute("CREATE TABLE $_expensesTableName(id INTEGER PRIMARY KEY NOT NULL, expenseTitle TEXT, expenseDate TEXT)");
+    await db.execute("CREATE TABLE $_expensesDetailTableName(id INTEGER PRIMARY KEY NOT NULL, expenseId INTEGER, expenseDescription TEXT, expenseMoney INTEGER)");
   }
 
   Future<List<Plan>> getPlan() async{
     var dbClient = await db;
-    var result = await dbClient.query("Plan", orderBy: "id");
+    var result = await dbClient.query("$_planTableName", orderBy: "id");
     return result.map((data) => Plan.fromMap(data)).toList();
   }
 
   Future<List<PlanDetail>> getPlanDetail(int planId) async{
     var dbClient = await db;
-    var result = await dbClient.query("PlanDetail", where: "planId=?", whereArgs: [planId]);
+    var result = await dbClient.query("$_planDetailTableName", where: "planId=?", whereArgs: [planId]);
     return result.map((data) => PlanDetail.fromMap(data)).toList();
-  }
-
-  Future<int> insertPlan(Plan plan) async{
-    var dbClient = await db;
-    return await dbClient.insert("Plan", plan.toMap());
-  }
-
-  Future<void> removePlan(int id) async{
-    var dbClient = await db;
-    return await dbClient.delete("Plan", where: "id=?", whereArgs: [id]);
-  }
-
-  Future<void> removePlanDetailByPlanId(int planId) async{
-    var dbClient = await db;
-    return await dbClient.delete("PlanDetail", where: "planId=?", whereArgs: [planId]);
-  }
-
-  Future<int> insertPlanDetail(PlanDetail planDetail) async{
-    var dbClient = await db;
-    return await dbClient.insert("PlanDetail", planDetail.toMap());
-  }
-
-  Future<int> updatePlanDetail(PlanDetail planDetail) async{
-    var dbClient = await db;
-    return await dbClient.update("PlanDetail", planDetail.toMap(), where: "id=?", whereArgs: [planDetail.id]);
-  }
-
-  Future<void> removePlanDetail(int id) async{
-    var dbClient = await db;
-    return await dbClient.delete("PlanDetail", where: "id=?", whereArgs: [id]);
   }
 
   Future<List<Expenses>> getExpenses() async{
     var dbClient = await db;
-    var result = await dbClient.query("Expenses", orderBy: "id");
+    var result = await dbClient.query("$_expensesTableName", orderBy: "id");
     return result.map((data) => Expenses.fromMap(data)).toList();
   }
 
   Future<List<ExpensesDetail>> getExpensesDetail(int expenseId) async{
     var dbClient = await db;
-    var result = await dbClient.query("ExpensesDetail", where: "expenseId=?", whereArgs: [expenseId]);
+    var result = await dbClient.query("$_expensesDetailTableName", where: "expenseId=?", whereArgs: [expenseId]);
     return result.map((data) => ExpensesDetail.fromMap(data)).toList();
-  }
-
-  Future<void> removeExpensesDetailByExpenseId(int expenseId) async{
-    var dbClient = await db;
-    return await dbClient.delete("ExpensesDetail", where: "expenseId=?", whereArgs: [expenseId]);
-  }
-
-  Future<int> insertExpense(Expenses expense) async{
-    var dbClient = await db;
-    return await dbClient.insert("Expenses", expense.toMap());
-  }
-
-  Future<void> removeExpense(int id) async{
-    var dbClient = await db;
-    return await dbClient.delete("Expenses", where: "id=?", whereArgs: [id]);
-  }
-
-  Future<int> insertExpenseDetail(ExpensesDetail expenseDetail) async{
-    var dbClient = await db;
-    return await dbClient.insert("ExpensesDetail", expenseDetail.toMap());
   }
 
   Future<List<Target>> getTargets() async{
     var dbClient = await db;
-    var result = await dbClient.query("Target", orderBy: "id");
+    var result = await dbClient.query("$_targetTableName", orderBy: "id");
     return result.map((data) => Target.fromMap(data)).toList();
   }
 
   Future<List<Target>> getTargetDetail(int id) async{
     var dbClient = await db;
-    var result = await dbClient.query("Target", where: "id=?", whereArgs: [id]);
+    var result = await dbClient.query("$_targetTableName", where: "id=?", whereArgs: [id]);
     return result.map((data) => Target.fromMap(data)).toList();
-  }
-
-  Future<int> insertTarget(Target target) async{
-    var dbClient = await db;
-    return await dbClient.insert("Target", target.toMap());
-  }
-
-  Future<void> removeTarget(int id) async{
-    var dbClient = await db;
-    return await dbClient.delete("Target", where: "id=?", whereArgs: [id]);
   }
 
   Future<List<Favorite>> getFavorites() async{
     var dbClient = await db;
-    var result = await dbClient.query("Favorites", orderBy: "id");
+    var result = await dbClient.query("$_favoritesTableName", orderBy: "id");
     return result.map((data) => Favorite.fromMap(data)).toList();
   }
 
@@ -139,16 +93,6 @@ class DbHelper{
     var dbClient = await db;
     var result = await dbClient.query("Favorites", where: "cityId=?", whereArgs: [id]);
     return result.map((data) => Favorite.fromMap(data)).toList();
-  }
-
-  Future<int> insertFavorite(Favorite favorite) async{
-    var dbClient = await db;
-    return await dbClient.insert("Favorites", favorite.toMap());
-  }
-
-  Future<void> removeFavorite(int id) async{
-    var dbClient = await db;
-    return await dbClient.delete("Favorites", where: "cityId=?", whereArgs: [id]);
   }
 
   Future getTotal(String tableName, String columnName) async {
@@ -163,5 +107,20 @@ class DbHelper{
     var result = await dbClient.rawQuery("SELECT SUM($columnName) FROM $tableName WHERE $idColumn = $id");
     int value = result[0]["SUM($columnName)"];
     return value;
+  }
+
+  Future<int> insertItem(dynamic model, String tableName) async{
+    var dbClient = await db;
+    return await dbClient.insert("$tableName", model.toMap());
+  }
+
+  Future<int> updateItem(dynamic model, String tableName, String columnName) async{
+    var dbClient = await db;
+    return await dbClient.update("$tableName", model.toMap(), where: "$columnName = ?", whereArgs: [model.id]);
+  }
+
+  Future<void> removeItem(String tableName, String columnName, int id) async{
+    var dbClient = await db;
+    return await dbClient.delete("$tableName", where: "$columnName=?", whereArgs: [id]);
   }
 }

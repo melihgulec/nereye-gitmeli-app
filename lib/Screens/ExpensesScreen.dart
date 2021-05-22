@@ -56,10 +56,9 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                   Expenses expense = snapshot.data[index];
                   return Dismissible(
                     onDismissed: (direction) {
-                      print(direction);
                       setState(() {
-                        _dbHelper.removeExpense(expense.id);
-                        _dbHelper.removeExpensesDetailByExpenseId(expense.id);
+                        _dbHelper.removeItem(_dbHelper.expensesTableName, 'id', expense.id);
+                        _dbHelper.removeItem(_dbHelper.expensesDetailTableName, 'expenseId', expense.id);
                       });
                       ToastHelper()
                           .makeToastMessage("${expense.expenseTitle} kaldırıldı.");

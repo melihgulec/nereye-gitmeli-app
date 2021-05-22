@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onChanged: (value){
                       eMail = value;
                     },
-
+                    keyboardType: TextInputType.emailAddress,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(

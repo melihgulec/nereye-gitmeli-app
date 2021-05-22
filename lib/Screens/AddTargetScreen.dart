@@ -241,7 +241,7 @@ class _ContentState extends State<Content> {
                         ToastHelper()
                             .makeToastMessage("Lütfen açıklamayı doldurunuz.");
                       } else {
-                        _dbHelper.insertTarget(
+                        _dbHelper.insertItem(
                             Target(
                               targetDestination: dropdownKonumValue == 1
                                   ? 'Yurtiçi'
@@ -251,7 +251,8 @@ class _ContentState extends State<Content> {
                               targetHead: targetHeadValue,
                               targetDate: DateFormat('dd.MM.yyyy HH:mm')
                                   .format(DateTime.now()),
-                            )
+                            ),
+                          _dbHelper.targetTableName
                         );
 
                         Navigator.pushReplacementNamed(

@@ -66,8 +66,13 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                             padding: EdgeInsets.all(8.0),
                             child: Row(
                               children: [
-                                Icon(Icons.money, color: Colors.white,),
-                                SizedBox(width: 15,),
+                                Icon(
+                                  Icons.money,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
                                 Text('Miktar: ${expenseDetail.expenseMoney}'),
                               ],
                             ),
@@ -125,24 +130,30 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      setState(() {
-                        if (descVal.trim() == "" && moneyVal.trim() == "") {
-                          ToastHelper().makeToastMessage(
-                              'Harcama adı ve miktarını doldurunuz.');
-                        } else if (descVal.trim() == "") {
-                          ToastHelper()
-                              .makeToastMessage('Harcama adını doldurunuz.');
-                        } else if (moneyVal.trim() == "") {
-                          ToastHelper().makeToastMessage('Miktarı doldurunuz.');
-                        } else {
-                          _dbHelper.insertExpenseDetail(ExpensesDetail(
-                              expenseId: widget.expense.id,
-                              expenseDescription: descVal,
-                              expenseMoney: int.parse(moneyVal)));
-                          _aciklamaController.clear();
-                          _miktarController.clear();
-                        }
-                      });
+                      setState(
+                        () {
+                          if (descVal.trim() == "" && moneyVal.trim() == "") {
+                            ToastHelper().makeToastMessage(
+                                'Harcama adı ve miktarını doldurunuz.');
+                          } else if (descVal.trim() == "") {
+                            ToastHelper()
+                                .makeToastMessage('Harcama adını doldurunuz.');
+                          } else if (moneyVal.trim() == "") {
+                            ToastHelper()
+                                .makeToastMessage('Miktarı doldurunuz.');
+                          } else {
+                            _dbHelper.insertItem(
+                                ExpensesDetail(
+                                  expenseId: widget.expense.id,
+                                  expenseDescription: descVal,
+                                  expenseMoney: int.parse(moneyVal),
+                                ),
+                                _dbHelper.expensesDetailTableName);
+                            _aciklamaController.clear();
+                            _miktarController.clear();
+                          }
+                        },
+                      );
                     },
                     child: Text('Yeni Eleman Ekle'),
                     style: ElevatedButton.styleFrom(

@@ -39,6 +39,8 @@ class AuthService{
       switch(e.code)
       {
         case 'weak-password': ToastHelper().makeToastMessage('Parola 6 karakterden fazla olmalıdır.'); break;
+        case 'email-already-in-use' : ToastHelper().makeToastMessage('Email kullanımdadır. Lütfen başka bir e-mail deneyin.'); break;
+        default: ToastHelper().makeToastMessage(e.code);
       }
     }
 

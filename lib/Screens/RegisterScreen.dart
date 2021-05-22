@@ -94,6 +94,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     TextField(
+                      keyboardType: TextInputType.emailAddress,
                       onChanged: (value){
                         eMail = value;
                       },

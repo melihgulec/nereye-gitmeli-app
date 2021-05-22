@@ -40,7 +40,9 @@ class _CityDetailState extends State<CityDetail> {
         body: TabBarView(
           children: [
             Content(data: widget.data),
-            WeatherScreen(data: widget.data,),
+            WeatherScreen(
+              data: widget.data,
+            ),
             CityCommentsScreen(
               sehirData: widget.data,
             ),
@@ -183,7 +185,10 @@ class _ContentState extends State<Content> {
                         if (!snapshot.hasData)
                           return CircleAvatar(
                             backgroundColor: Theme.of(context).primaryColor,
-                            child: Icon(Icons.warning_amber_outlined, color: Colors.red,),
+                            child: Icon(
+                              Icons.warning_amber_outlined,
+                              color: Colors.red,
+                            ),
                           );
                         if (snapshot.data.isEmpty)
                           return CircleAvatar(
@@ -196,8 +201,10 @@ class _ContentState extends State<Content> {
                               onPressed: () {
                                 setState(
                                   () {
-                                    _dbHelper.insertFavorite(
-                                        Favorite(cityId: widget.data.id));
+                                    _dbHelper.insertItem(
+                                      Favorite(cityId: widget.data.id),
+                                      _dbHelper.favoritesTableName
+                                    );
 
                                     ToastHelper().makeToastMessage(
                                         'Favorilere eklendi.');
@@ -216,7 +223,10 @@ class _ContentState extends State<Content> {
                             onPressed: () {
                               setState(
                                 () {
-                                  _dbHelper.removeFavorite(widget.data.id);
+                                  _dbHelper.removeItem(
+                                      _dbHelper.favoritesTableName,
+                                      'cityId',
+                                      widget.data.id);
                                   ToastHelper().makeToastMessage(
                                       'Favorilerden kaldırıldı.');
                                 },

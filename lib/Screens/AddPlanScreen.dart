@@ -87,10 +87,11 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                           }else if(planTitleValue.trim() == ""){
                             ToastHelper().makeToastMessage('Lütfen plan başlığını doldurunuz.');
                           }else{
-                            _dbHelper.insertPlan(
+                            _dbHelper.insertItem(
                               Plan(
                                 planTitle: planTitleValue
-                              )
+                              ),
+                              _dbHelper.planTableName
                             );
                             Navigator.pushReplacementNamed(context, myRouteNames.planRoute);
                           }

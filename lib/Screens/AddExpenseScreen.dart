@@ -84,12 +84,13 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                             if(expenseTitleValue.trim() == ""){
                               ToastHelper().makeToastMessage('Lütfen harcama başlığını doldurunuz.');
                             }else{
-                              _dbHelper.insertExpense(
+                              _dbHelper.insertItem(
                                 Expenses(
                                   expenseTitle: expenseTitleValue,
                                   expenseDate: DateFormat('dd.MM.yyyy')
                                       .format(DateTime.now())
-                                )
+                                ),
+                                _dbHelper.expensesTableName
                               );
                               Navigator.pushReplacementNamed(context, myRouteNames.expensesRoute);
                             }
