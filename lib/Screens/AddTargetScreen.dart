@@ -7,7 +7,6 @@ import 'package:nereye_gitmeli_app/Classes/Sehir/Sehir.dart';
 import 'package:nereye_gitmeli_app/Classes/User/Target.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 
-import 'package:nereye_gitmeli_app/Constants/RouteNames.dart' as myRouteNames;
 import 'package:nereye_gitmeli_app/Constants/Colors.dart' as myColors;
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
@@ -36,8 +35,8 @@ class _ContentState extends State<Content> {
   int dropdownKonumValue = 1;
   List<Sehir> initialSehir;
 
-  String descriptionValue = "";
-  String targetHeadValue = "";
+  final _descriptionController = TextEditingController();
+  final _targetTitleController = TextEditingController();
 
   @override
   void initState() {
@@ -49,11 +48,13 @@ class _ContentState extends State<Content> {
   }
 
   int findCityId(String sehirAdi) {
-    int index = sehirData.yurtici.indexWhere((element) => element.adi == sehirAdi);
-    if(index == -1){
-      index = sehirData.yurtdisi.indexWhere((element) => element.adi == sehirAdi);
+    int index =
+        sehirData.yurtici.indexWhere((element) => element.adi == sehirAdi);
+    if (index == -1) {
+      index =
+          sehirData.yurtdisi.indexWhere((element) => element.adi == sehirAdi);
       return sehirData.yurtdisi[index].id;
-    }else{
+    } else {
       return sehirData.yurtici[index].id;
     }
   }
@@ -94,11 +95,7 @@ class _ContentState extends State<Content> {
                             ),
                             maxLines: null,
                             style: TextStyle(color: Colors.white),
-                            onChanged: (value) {
-                              setState(() {
-                                targetHeadValue = value;
-                              });
-                            },
+                            controller: _targetTitleController,
                           ),
                         ),
                         flex: 2,
@@ -206,11 +203,7 @@ class _ContentState extends State<Content> {
                             ),
                             maxLines: null,
                             style: TextStyle(color: Colors.white),
-                            onChanged: (value) {
-                              setState(() {
-                                descriptionValue = value;
-                              });
-                            },
+                            controller: _descriptionController,
                           ),
                         ),
                         flex: 2,
@@ -230,14 +223,14 @@ class _ContentState extends State<Content> {
                       ),
                     ),
                     onPressed: () {
-                      if (targetHeadValue.trim() == "" &&
-                          descriptionValue == "") {
+                      if (_targetTitleController.text.trim() == "" &&
+                          _descriptionController.text.trim() == "") {
                         ToastHelper().makeToastMessage(
                             "Lütfen açıklama ve hedef başlığını doldurunuz.");
-                      } else if (targetHeadValue.trim() == "") {
+                      } else if (_targetTitleController.text.trim() == "") {
                         ToastHelper().makeToastMessage(
                             "Lütfen hedef başlığını doldurunuz.");
-                      } else if (descriptionValue.trim() == "") {
+                      } else if (_descriptionController.text.trim() == "") {
                         ToastHelper()
                             .makeToastMessage("Lütfen açıklamayı doldurunuz.");
                       } else {
@@ -246,17 +239,15 @@ class _ContentState extends State<Content> {
                               targetDestination: dropdownKonumValue == 1
                                   ? 'Yurtiçi'
                                   : 'Yurtdışı',
-                              targetDestinationCityId: findCityId(dropdownValue),
-                              targetDescription: descriptionValue,
-                              targetHead: targetHeadValue,
+                              targetDestinationCityId:
+                                  findCityId(dropdownValue),
+                              targetDescription: _descriptionController.text,
+                              targetHead: _targetTitleController.text,
                               targetDate: DateFormat('dd.MM.yyyy HH:mm')
                                   .format(DateTime.now()),
                             ),
-                          _dbHelper.targetTableName
-                        );
+                            _dbHelper.targetTableName);
                         Navigator.pop(context);
-                        /*Navigator.pushReplacementNamed(
-                            context, myRouteNames.targetRoute);*/
                       }
                     },
                   )

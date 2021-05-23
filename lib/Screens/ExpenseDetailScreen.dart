@@ -18,8 +18,6 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
   DbHelper _dbHelper;
   final _aciklamaController = TextEditingController();
   final _miktarController = TextEditingController();
-  String descVal = "";
-  String moneyVal = "";
 
   @override
   void initState() {
@@ -99,9 +97,6 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                             ),
                           ),
                           controller: _aciklamaController,
-                          onChanged: (value) {
-                            descVal = value;
-                          },
                         ),
                       ),
                       SizedBox(
@@ -118,9 +113,6 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                             ),
                           ),
                           controller: _miktarController,
-                          onChanged: (value) {
-                            moneyVal = value;
-                          },
                         ),
                       ),
                     ],
@@ -132,21 +124,21 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                     onPressed: () {
                       setState(
                         () {
-                          if (descVal.trim() == "" && moneyVal.trim() == "") {
+                          if (_aciklamaController.text.trim() == "" && _miktarController.text.trim() == "") {
                             ToastHelper().makeToastMessage(
                                 'Harcama adı ve miktarını doldurunuz.');
-                          } else if (descVal.trim() == "") {
+                          } else if (_aciklamaController.text.trim() == "") {
                             ToastHelper()
                                 .makeToastMessage('Harcama adını doldurunuz.');
-                          } else if (moneyVal.trim() == "") {
+                          } else if (_miktarController.text.trim() == "") {
                             ToastHelper()
                                 .makeToastMessage('Miktarı doldurunuz.');
                           } else {
                             _dbHelper.insertItem(
                                 ExpensesDetail(
                                   expenseId: widget.expense.id,
-                                  expenseDescription: descVal,
-                                  expenseMoney: int.parse(moneyVal),
+                                  expenseDescription: _aciklamaController.text,
+                                  expenseMoney: int.parse(_miktarController.text),
                                 ),
                                 _dbHelper.expensesDetailTableName);
                             _aciklamaController.clear();

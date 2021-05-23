@@ -3,6 +3,7 @@ import 'package:nereye_gitmeli_app/Classes/User/Plan.dart';
 import 'package:nereye_gitmeli_app/Classes/User/PlanDetail.dart';
 import 'package:nereye_gitmeli_app/Components/ContainerWithTitle.dart';
 import 'package:nereye_gitmeli_app/Helpers/DbHelper.dart';
+import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 
 class PlanDetailScreen extends StatefulWidget {
   final Plan plan;
@@ -16,7 +17,6 @@ class PlanDetailScreen extends StatefulWidget {
 class _PlanDetailScreenState extends State<PlanDetailScreen> {
   DbHelper _dbHelper;
   final _aciklamaController = TextEditingController();
-  String descVal;
   int planStatus = 0;
 
   @override
@@ -111,9 +111,6 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
                     ),
                   ),
                   controller: _aciklamaController,
-                  onChanged: (value) {
-                    descVal = value;
-                  },
                 ),
               ),
               SizedBox(
@@ -123,14 +120,18 @@ class _PlanDetailScreenState extends State<PlanDetailScreen> {
                 onPressed: () {
                   setState(
                     () {
-                      _dbHelper.insertItem(
-                        PlanDetail(
-                          description: descVal,
-                          planId: widget.plan.id,
-                          status: 0,
-                        ),
-                        _dbHelper.planDetailTableName
-                      );
+                      if(_aciklamaController.text.trim() == ""){
+                        ToastHelper().makeToastMessage("Lütfen açıklamayı doldurunuz.");
+                      }else{
+                        _dbHelper.insertItem(
+                            PlanDetail(
+                              description: _aciklamaController.text,
+                              planId: widget.plan.id,
+                              status: 0,
+                            ),
+                            _dbHelper.planDetailTableName
+                        );
+                      }
                     },
                   );
                   _aciklamaController.clear();
