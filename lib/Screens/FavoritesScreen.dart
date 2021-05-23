@@ -20,48 +20,58 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     _dbHelper = DbHelper();
   }
 
+  void refresh() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Favorilerim'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FutureBuilder(
-          future: _dbHelper.getFavorites(),
-          builder: (context, snapshot){
-            if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
-            if (snapshot.data.isEmpty){
-              return Center(
-                child: Text(
-                  'Henüz favori şehirlerini seçmemişsin.\nGeri dön ve bir şehir seç!',
-                  textAlign: TextAlign.center,
-                ),
-              );
-            }
-
-            return ListView.builder(
-              itemCount: snapshot.data.length,
-              itemBuilder: (context, index){
-                Favorite favorite = snapshot.data[index];
-
-               return FavoriteWidget(
-                 cityId: favorite.cityId,
-               );
-              },
-            );
-          },
+        appBar: AppBar(
+          title: Text('Favorilerim'),
         ),
-      )
-    );
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: FutureBuilder(
+            future: _dbHelper.getFavorites(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData)
+                return Center(child: CircularProgressIndicator());
+              if (snapshot.data.isEmpty) {
+                return Center(
+                  child: Text(
+                    'Henüz favori şehirlerini seçmemişsin.\nGeri dön ve bir şehir seç!',
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              }
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (context, index) {
+                  Favorite favorite = snapshot.data[index];
+
+                  return FavoriteWidget(
+                    key: UniqueKey(),
+                    parentFunc: refresh,
+                    cityId: favorite.cityId,
+                  );
+                },
+              );
+            },
+          ),
+        ));
   }
 }
 
 class FavoriteWidget extends StatefulWidget {
   final int cityId;
+  final Function() parentFunc;
 
-  FavoriteWidget({this.cityId});
+  FavoriteWidget({
+    Key key,
+    @required this.cityId,
+    @required this.parentFunc
+  }) : super(key: key);
 
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
@@ -73,10 +83,10 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   Sehir findCityById(int cityId) {
     int index = sehirData.yurtici.indexWhere((element) => element.id == cityId);
-    if(index == -1){
+    if (index == -1) {
       index = sehirData.yurtdisi.indexWhere((element) => element.id == cityId);
       return sehirData.yurtdisi[index];
-    }else{
+    } else {
       return sehirData.yurtici[index];
     }
   }
@@ -94,7 +104,10 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
       child: ListTile(
         onTap: () {
           Navigator.pushNamed(context, myRouteNames.cityDetailRoute,
-              arguments: currentSehir);
+                  arguments: currentSehir)
+              .then((value) {
+            widget.parentFunc();
+          });
         },
         tileColor: Colors.white,
         leading: Icon(

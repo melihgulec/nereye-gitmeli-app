@@ -254,9 +254,9 @@ class _ContentState extends State<Content> {
                             ),
                           _dbHelper.targetTableName
                         );
-
-                        Navigator.pushReplacementNamed(
-                            context, myRouteNames.targetRoute);
+                        Navigator.pop(context);
+                        /*Navigator.pushReplacementNamed(
+                            context, myRouteNames.targetRoute);*/
                       }
                     },
                   )

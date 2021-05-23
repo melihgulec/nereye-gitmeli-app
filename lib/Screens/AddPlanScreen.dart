@@ -93,7 +93,7 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                               ),
                               _dbHelper.planTableName
                             );
-                            Navigator.pushReplacementNamed(context, myRouteNames.planRoute);
+                            Navigator.pop(context);
                           }
                         },
                       )

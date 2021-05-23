@@ -53,7 +53,7 @@ class _TargetDetailState extends State<TargetDetail> {
               onTap: (){
                 _dbHelper.removeItem(_dbHelper.targetTableName, 'id', widget.hedef.id);
                 ToastHelper().makeToastMessage("${widget.hedef.targetHead} hedeflerinden kaldırıldı.");
-                Navigator.pushReplacementNamed(context, myRouteNames.targetRoute);
+                Navigator.pop(context);
               },
               onTapCancel: (){
                 ToastHelper().makeToastMessage('Hedef silinmedi.');

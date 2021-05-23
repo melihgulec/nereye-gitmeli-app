@@ -92,7 +92,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                                 ),
                                 _dbHelper.expensesTableName
                               );
-                              Navigator.pushReplacementNamed(context, myRouteNames.expensesRoute);
+                              Navigator.pop(context);
                             }
                           },
                         )

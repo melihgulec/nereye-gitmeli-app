@@ -27,7 +27,7 @@ class _PlanScreenState extends State<PlanScreen> {
           child: Icon(Icons.add),
           backgroundColor: Theme.of(context).primaryColor,
           onPressed: () {
-            Navigator.pushReplacementNamed(context, myRouteNames.addPlanRoute);
+            Navigator.pushNamed(context, myRouteNames.addPlanRoute).then((value){setState((){});});
           },
         ),
         appBar: AppBar(
@@ -37,7 +37,7 @@ class _PlanScreenState extends State<PlanScreen> {
           padding: const EdgeInsets.all(5.0),
           child: FutureBuilder(
             future: _dbHelper.getPlan(),
-            builder: (context, snapshot){
+            builder: (context, AsyncSnapshot<List<Plan>> snapshot){
               if (!snapshot.hasData)
                 return Center(child: CircularProgressIndicator());
               if (snapshot.data.isEmpty)
@@ -55,8 +55,11 @@ class _PlanScreenState extends State<PlanScreen> {
                   return Card(
                     child: Dismissible(
                       onDismissed: (direction) {
-                        _dbHelper.removeItem(_dbHelper.planDetailTableName, 'planId', plan.id);
-                        _dbHelper.removeItem(_dbHelper.planTableName, 'id', plan.id);
+                        setState(() {
+                          _dbHelper.removeItem(_dbHelper.planDetailTableName, 'planId', plan.id);
+                          _dbHelper.removeItem(_dbHelper.planTableName, 'id', plan.id);
+                          snapshot.data.removeAt(index);
+                        });
                         ToastHelper().makeToastMessage(
                             "${plan.planTitle} kaldırıldı.");
                       },

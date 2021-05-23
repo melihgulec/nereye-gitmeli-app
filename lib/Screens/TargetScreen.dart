@@ -29,7 +29,7 @@ class _TargetScreenState extends State<TargetScreen> {
         ),
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, myRouteNames.addTargetRoute);
+          Navigator.pushNamed(context, myRouteNames.addTargetRoute).then((values){setState((){});});
         },
       ),
       appBar: AppBar(
@@ -39,7 +39,7 @@ class _TargetScreenState extends State<TargetScreen> {
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future: _dbHelper.getTargets(),
-          builder: (context, snapshot) {
+          builder: (context, AsyncSnapshot<List<Target>> snapshot) {
             if (!snapshot.hasData)
               return Center(child: CircularProgressIndicator());
             if (snapshot.data.isEmpty)
@@ -57,7 +57,10 @@ class _TargetScreenState extends State<TargetScreen> {
                 return Card(
                   child: Dismissible(
                     onDismissed: (direction) {
-                      _dbHelper.removeItem(_dbHelper.targetTableName, 'id', target.id);
+                      setState(() {
+                        _dbHelper.removeItem(_dbHelper.targetTableName, 'id', target.id);
+                        snapshot.data.removeAt(index);
+                      });
                       ToastHelper().makeToastMessage(
                           "${target.targetHead} hedeflerinden kaldırıldı.");
                     },
@@ -107,9 +110,9 @@ class _TargetScreenState extends State<TargetScreen> {
                             '${target.targetDate} tarihinde oluşturuldu.');
                       },
                       onTap: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                             context, myRouteNames.targetDetailRoute,
-                            arguments: target);
+                            arguments: target).then((value){setState((){});});
                       },
                     ),
                   ),

@@ -26,7 +26,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
         child: Icon(Icons.add),
         backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
-          Navigator.pushReplacementNamed(context, myRouteNames.addExpenseRoute);
+          Navigator.pushNamed(context, myRouteNames.addExpenseRoute).then((value){setState((){});});
         },
       ),
       appBar: AppBar(
@@ -36,7 +36,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
           padding: const EdgeInsets.all(8.0),
           child: FutureBuilder(
             future: _dbHelper.getExpenses(),
-            builder: (context, snapshot) {
+            builder: (context, AsyncSnapshot<List<Expenses>> snapshot) {
               if (!snapshot.hasData)
                 return Center(child: CircularProgressIndicator());
               if (snapshot.data.isEmpty)
@@ -59,6 +59,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                       setState(() {
                         _dbHelper.removeItem(_dbHelper.expensesTableName, 'id', expense.id);
                         _dbHelper.removeItem(_dbHelper.expensesDetailTableName, 'expenseId', expense.id);
+                        snapshot.data.removeAt(index);
                       });
                       ToastHelper()
                           .makeToastMessage("${expense.expenseTitle} kaldırıldı.");
@@ -95,8 +96,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                     child: InkWell(
                       splashColor: Colors.blue.withAlpha(30),
                       onTap: () {
-                        Navigator.pushNamed(context, myRouteNames.expenseDetailRoute,
-                            arguments: expense);
+                        Navigator.pushNamed(context, myRouteNames.expenseDetailRoute, arguments: expense).then((value){setState((){});});
                       },
                       child: Container(
                         padding: EdgeInsets.all(8),
