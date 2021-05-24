@@ -1,6 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:nereye_gitmeli_app/Helpers/FileUtils.dart';
 
-class Hakkinda extends StatelessWidget {
+class Hakkinda extends StatefulWidget {
+  @override
+  _HakkindaState createState() => _HakkindaState();
+}
+
+class _HakkindaState extends State<Hakkinda> {
+  String text;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    readData();
+  }
+
+  readData(){
+    FileUtils.readFromFile().then((value){
+      setState(() {
+        text = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +35,7 @@ class Hakkinda extends StatelessWidget {
         padding: const EdgeInsets.all(25.0),
         child: Center(
           child: Text(
-            'Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193301059 numaralı Melih GÜLEÇ tarafından 25 Haziran 2021 günü yapılmıştır.',
+            "$text",
             textAlign: TextAlign.center,
           ),
         ),
