@@ -287,9 +287,7 @@ class Data {
               fotograf: 'royal ontario müzesi'),
         ],
         yemekler: [
-          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
-          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
-          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
+          Foods(ad: 'Peameal', aciklama: 'peameal açıklaması', fotograf: 'peameal'),
         ]),
     Sehir(
         id: 12,
@@ -314,7 +312,11 @@ class Data {
               adi: 'Cambridge Science Centre',
               aciklama: "Başlangıçta İngiltere'nin Cambridge kentindeki Jesus Lane'de bulunan Cambridge Bilim Merkezi, kentin ilk interaktif bilim müzesidir. Başlangıç ​​sergi alanı, Cambridge Üniversitesi Rektör Yardımcısı Leszek Borysiewicz tarafından 7 Şubat 2013 tarihinde açıldı, müze 8 Şubat 2013'te halka açıldı.",
               fotograf: 'Cambridge Science Centre'),
-        ]),
+        ],
+      yemekler: [
+        Foods(ad: 'Creme Brulee', aciklama: 'Creme Brulee açıklaması', fotograf: 'cremebrulee'),
+      ]
+    ),
     Sehir(
         id: 13,
         adi: 'Londra',
@@ -340,9 +342,7 @@ class Data {
               fotograf: 'westminster sarayı'),
         ],
         yemekler: [
-          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
-          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
-          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
+          Foods(ad: 'Fish and Chips', aciklama: 'fish and chips açıklaması', fotograf: 'fishandchips'),
         ]),
     Sehir(
         id: 14,
@@ -369,9 +369,7 @@ class Data {
               fotograf: 'universal studios'),
         ],
         yemekler: [
-          Foods(ad: 'Ciğer Sarma', aciklama: 'ciğer sarma açıklaması', fotograf: 'cigersarma'),
-          Foods(ad: 'Tava Ciğer', aciklama: 'tava ciğer açıklaması', fotograf: 'tavacigeri'),
-          Foods(ad: 'Zirva', aciklama: 'yufkalı büryan açıklaması', fotograf: 'zirva'),
+          Foods(ad: 'Tacos', aciklama: 'tacos açıklaması', fotograf: 'tacos'),
         ]),
   ];
 }

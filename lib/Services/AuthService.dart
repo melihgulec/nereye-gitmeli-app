@@ -16,6 +16,7 @@ class AuthService{
         case 'user-not-found': ToastHelper().makeToastMessage('Kullanıcı bulunamadı.'); break;
         case 'wrong-password': ToastHelper().makeToastMessage('Şifre yanlış.'); break;
         case 'too-many-requests': ToastHelper().makeToastMessage('Çok fazla istek gönderdiniz. Lütfen biraz bekleyin.'); break;
+        case 'invalid-email': ToastHelper().makeToastMessage('Geçersiz e-posta biçimi. Lütfen tekrar deneyin.'); break;
       }
     }
 

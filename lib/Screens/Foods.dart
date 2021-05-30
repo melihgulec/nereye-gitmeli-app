@@ -51,7 +51,7 @@ class FoodCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                 ),
                 child: Image(
-                  image: AssetImage('assets/images/Yurtici/Yemek/${sehir.adi}/${yemekData.fotograf}.jpg'),
+                  image: AssetImage('assets/images/${sehir.type == 1 ? 'Yurtici' : 'Yurtdisi'}/Yemek/${sehir.adi}/${yemekData.fotograf}.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -85,6 +85,10 @@ flutter:
     - assets/images/Yurtdisi/Mekan/Los Angeles/
     - assets/images/Yurtdisi/Mekan/Londra/
     - assets/images/Yurtdisi/Mekan/Toronto/
+    - assets/images/Yurtdisi/Yemek/Cambridge/
+    - assets/images/Yurtdisi/Yemek/Los Angeles/
+    - assets/images/Yurtdisi/Yemek/Londra/
+    - assets/images/Yurtdisi/Yemek/Toronto/
     - assets/images/App/
   #   - images/a_dot_ham.jpeg
 
