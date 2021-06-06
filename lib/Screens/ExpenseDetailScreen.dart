@@ -63,15 +63,32 @@ class _ExpenseDetailScreenState extends State<ExpenseDetailScreen> {
                           widget: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Icon(
-                                  Icons.money,
-                                  color: Colors.white,
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.money,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 15,
+                                    ),
+                                    Text('Miktar: ${expenseDetail.expenseMoney}'),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 15,
-                                ),
-                                Text('Miktar: ${expenseDetail.expenseMoney}'),
+                                IconButton(
+                                  onPressed: (){
+                                    setState(() {
+                                      _dbHelper.removeItem(_dbHelper.expensesDetailTableName, 'id', expenseDetail.id);
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.delete_forever,
+                                    color: Colors.red,
+                                    size: 30,
+                                  ),
+                                )
                               ],
                             ),
                           ),

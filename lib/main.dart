@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:nereye_gitmeli_app/Helpers/FileUtils.dart';
 import 'package:nereye_gitmeli_app/Helpers/ToastHelper.dart';
 import 'Constants/Colors.dart';
@@ -29,7 +30,8 @@ class _HomeViewState extends State<HomeView> {
           ToastHelper().makeToastMessage('Bir şeyler ters gitti. Hata: ${snapshot.error}');
         }
 
-        FileUtils.saveToFile("Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193301059 numaralı Melih GÜLEÇ tarafından 25 Haziran 2021 günü yapılmıştır.");
+        FileUtils.saveToFile('DATE-LOG: ' + DateTime.now().toString() +"\n");
+        print(FileUtils.readFromFile().then((value) => print(value)));
 
         return MaterialApp(
           debugShowCheckedModeBanner: false,

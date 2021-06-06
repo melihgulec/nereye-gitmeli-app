@@ -76,7 +76,7 @@ class _CityCommentsScreenState extends State<CityCommentsScreen> {
                         child: Image(
                           image: NetworkImage('https://ui-avatars.com/api/?name=${userName == null ? 'x' : userName.replaceAll(' ', '+')}&size=256&bold=true&rounded=true'),
                           errorBuilder: (context, object, stackTrace){
-                            return Icon(Icons.person);
+                            return Icon(Icons.person, color: Colors.white,);
                           },
                           loadingBuilder: (context, child, loadingProgress){
                             if(loadingProgress == null) return child;

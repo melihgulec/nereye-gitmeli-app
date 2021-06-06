@@ -35,9 +35,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        print('${yemekData.aciklama}, ${sehir.adi}');
-      },
+      onTap: (){},
       child: Container(
         width: double.infinity,
         child: Row(
@@ -69,7 +67,7 @@ class FoodCard extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Icon(
-                Icons.chevron_right,
+                Icons.fastfood,
                 color: Colors.white,
               ),
             )

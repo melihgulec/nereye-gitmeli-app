@@ -9,11 +9,11 @@ class FileUtils {
   }
   static Future<File> get getFile async {
     final path = await getFilePath;
-    return File('$path/settings.txt');
+    return File('$path/logs.txt');
   }
   static Future<File> saveToFile(String data) async {
     final file = await getFile;
-    return file.writeAsString(data);
+    return file.writeAsString(data, mode: FileMode.append);
   }
   static Future<String> readFromFile() async {
     try {
