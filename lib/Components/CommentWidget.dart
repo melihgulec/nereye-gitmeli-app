@@ -62,7 +62,7 @@ class CommentWidget extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     child: Text(
-                      '${DateFormat('dd.mm.yyyy hh:mm').format(time)}',
+                      '${DateFormat('dd.MM.yyyy HH:mm').format(time)}',
                       style: TextStyle(fontSize: 13),
                     ),
                   ),
