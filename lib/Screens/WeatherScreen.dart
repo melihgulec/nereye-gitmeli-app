@@ -28,143 +28,163 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: havaDurumu,
-      builder: (context, AsyncSnapshot<Weather> snapshot) {
-        if (snapshot.hasData) {
-          return Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: Stack(
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: FutureBuilder(
+            future: havaDurumu,
+            builder: (context, AsyncSnapshot<Weather> snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
-                        child: Container(
-                          color: Colors.transparent,
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                    Expanded(
+                      child: Stack(
                         children: [
-                          Text(
-                              '${DateFormat('dd.MM.yyyy').format(DateTime.now())}'),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            '${snapshot.data.temp} °C',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 45),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Text(
-                            '${toBeginningOfSentenceCase(snapshot.data.description)}',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.location_on_rounded,
-                                color: Colors.white,
+                          Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/${widget.data.type == 1 ? 'Yurtici' : 'Yurtdisi'}/${widget.data.adi.toLowerCase()}.jpg'),
+                                fit: BoxFit.cover,
                               ),
-                              SizedBox(
-                                width: 10,
+                            ),
+                            child: BackdropFilter(
+                              filter:
+                                  ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                              child: Container(
+                                color: Colors.transparent,
                               ),
-                              Text(
-                                '${widget.data.adi}',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          )
+                            ),
+                          ),
+                          Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                    '${DateFormat('dd.MM.yyyy').format(DateTime.now())}'),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Text(
+                                  '${snapshot.data.temp} °C',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 45),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Text(
+                                  '${toBeginningOfSentenceCase(snapshot.data.description)}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.location_on_rounded,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      '${widget.data.adi}',
+                                      style: TextStyle(fontSize: 18),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Column(
+                          children: [
+                            ContainerWithTitle(
+                              title: 'Detay',
+                              widget: Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    WeatherPropsListWidget(
+                                      title: 'Bulut',
+                                      icon: Icons.cloud,
+                                      value:
+                                          '%' + snapshot.data.cloud.toString(),
+                                    ),
+                                    WeatherPropsListWidget(
+                                      title: 'Nem',
+                                      icon: Icons.opacity,
+                                      value: '%' +
+                                          snapshot.data.humidity.toString(),
+                                    ),
+                                    WeatherPropsListWidget(
+                                      title: 'Basınç',
+                                      icon: Icons.circle,
+                                      value: ((snapshot.data.pressure * 0.001)
+                                          .toStringAsFixed(2)),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            ContainerWithTitle(
+                              title: 'Detay',
+                              widget: Padding(
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    WeatherPropsListWidget(
+                                      title: 'Rüzgar',
+                                      icon: Icons.waves,
+                                      value:
+                                          snapshot.data.windSpeed.toString() +
+                                              ' m/s',
+                                    ),
+                                    WeatherPropsListWidget(
+                                      title: 'Rüzgar Yönü',
+                                      icon: Icons.explore,
+                                      value: snapshot.data.windDeg.toString() +
+                                          ' deg',
+                                    ),
+                                    WeatherPropsListWidget(
+                                      title: 'Görüş',
+                                      icon: Icons.visibility,
+                                      value: (snapshot.data.visibility * 0.001)
+                                              .toStringAsFixed(0) +
+                                          ' km',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Column(
-                    children: [
-                      ContainerWithTitle(
-                        title: 'Detay',
-                        widget: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              WeatherPropsListWidget(
-                                title: 'Bulut',
-                                icon: Icons.cloud,
-                                value: '%'+snapshot.data.cloud.toString(),
-                              ),
-                              WeatherPropsListWidget(
-                                title: 'Nem',
-                                icon: Icons.opacity,
-                                value: '%'+snapshot.data.humidity.toString(),
-                              ),
-                              WeatherPropsListWidget(
-                                title: 'Basınç',
-                                icon: Icons.circle,
-                                value: ((snapshot.data.pressure * 0.001).toStringAsFixed(2)),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      ContainerWithTitle(
-                        title: 'Detay',
-                        widget: Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              WeatherPropsListWidget(
-                                title: 'Rüzgar',
-                                icon: Icons.waves,
-                                value: snapshot.data.windSpeed.toString() + ' m/s',
-                              ),
-                              WeatherPropsListWidget(
-                                title: 'Rüzgar Yönü',
-                                icon: Icons.explore,
-                                value: snapshot.data.windDeg.toString() + ' deg',
-                              ),
-                              WeatherPropsListWidget(
-                                title: 'Görüş',
-                                icon: Icons.visibility,
-                                value: (snapshot.data.visibility * 0.001).toStringAsFixed(0) + ' km',
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          );
-        }
-        return Center(child: CircularProgressIndicator());
-      },
+                );
+              }
+              return Center(child: CircularProgressIndicator());
+            },
+          ),
+        )
+      ],
     );
   }
 }
