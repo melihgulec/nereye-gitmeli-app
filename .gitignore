@@ -12,9 +12,6 @@
 #Google services
 android/app/google-services.json
 
-#API
-lib/Constants/API.dart
-
 # IntelliJ related
 *.iml
 *.ipr
